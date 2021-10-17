@@ -67,3 +67,9 @@ section{
 .section-two{
   background-color: rgb(205, 216, 59);
 }
+.shop-now{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+}
