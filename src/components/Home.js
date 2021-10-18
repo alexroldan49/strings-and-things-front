@@ -1,21 +1,17 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Navbar from "./Navbar";
 import HomeContent from "./HomeContent";
 
-function Home(){
-    const history = useHistory()
+function Home({mappedCategories}){
 
-function handleHistory(e){
-    history.push(e.target.value)
-}
-    
+
 
 return(
     <div className="container">
         <section className="section-one" >
-            <Navbar/>
-            <HomeContent/>
+            <Navbar mappedCategories={mappedCategories} />
+            <HomeContent mappedCategories={mappedCategories}/>
         </section>
         <section className="section-two" >
             
