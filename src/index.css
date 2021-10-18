@@ -73,3 +73,12 @@ section{
   align-items: center;
   margin-top: 80px;
 }
+.product-grid{
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-template-rows: 33% 33% 33%;
+}
+.product-card{
+  margin-bottom: 500px;
+  list-style: none;
+}

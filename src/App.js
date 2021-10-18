@@ -55,13 +55,13 @@ function handleChange(id){
 
 const mappedCategories =  categories.map(category =>{
   return(   
-       <li>
-          <h3 value={category.id} onClick={()=>handleChange(category.id)} >{category.name}</h3>
+       <li onClick={()=>handleChange(category.id)} >
+          <h3 value={category.id} >{category.name}</h3>
       </li>)
 })
 
 const mappedProducts = categories.map(category => {
-    return(<Route path = "/categories/:id">
+    return(<Route path = {`/categories/${category.id}`}>
       <ProductList mappedCategories={mappedCategories} category={category}/>
     </Route>)
 })
@@ -85,9 +85,9 @@ const mappedProducts = categories.map(category => {
         <Route path="/login" >
          <Login setCurrentUser={setCurrentUser} />
         </Route>
-        <Route path="/products" >
+        {/* <Route path="/products" >
          <ProductList products={products} />
-        </Route>
+        </Route> */}
         {mappedProducts}
       </Switch>
     // </div>
