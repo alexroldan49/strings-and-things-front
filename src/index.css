@@ -31,6 +31,8 @@ code {
 .logo {
   cursor: pointer;
   margin-right: auto;
+  color:white;
+  padding: 15px;
 }
 .subheader{
   margin: 0;
@@ -77,8 +79,23 @@ section{
   display: grid;
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 33% 33% 33%;
+  width: 80%;
+  float: right;
 }
 .product-card{
   margin-bottom: 500px;
   list-style: none;
+}
+.row{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.added{
+  color: green;
+  font-weight: bold;
+}
+.inline{
+  display: flex;
+  flex-direction:row
 }

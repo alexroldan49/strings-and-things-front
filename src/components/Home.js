@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Navbar from "./Navbar";
 import HomeContent from "./HomeContent";
+import ProductList from "./ProductList";
 
 function Home({mappedCategories}){
 
@@ -14,7 +15,7 @@ return(
             <HomeContent mappedCategories={mappedCategories}/>
         </section>
         <section className="section-two" >
-            
+        
         </section>
         <section className="section-three" >
 

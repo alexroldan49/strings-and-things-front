@@ -16,10 +16,18 @@ function Navbar( {mappedCategories} ){
         history.push("/login")
     }
 
+    function handleSwitchHome(){
+        history.push("/")
+    }
+
+    let storage = JSON.parse(localStorage.getItem("cart"))
+
     return(
         <>
         <nav className="navbar">
-                    <a className="logo">Strings and Things</a>
+            <div className="logo" onClick={handleSwitchHome} >
+                    <h2>Strings and Things</h2>
+            </div>
             <ul>
                 <li>
                     <Input
@@ -36,9 +44,13 @@ function Navbar( {mappedCategories} ){
                     <AccountCircleOutlinedIcon sx={{fontSize: "35px", cursor: "pointer"}} value="/login" onClick={handleSwitchLogin} />
                 </li>
                 <li>
+                    <div className="inline" >
                     <ShoppingCartIcon
                     sx={{color:"#a5362e", fontSize: "35px", cursor: "pointer"}}
                     />
+                    {localStorage.cart? <div><h4>{storage.length}</h4></div> : <div></div> }
+                    
+                    </div>
                 </li>
             </ul>
         </nav>

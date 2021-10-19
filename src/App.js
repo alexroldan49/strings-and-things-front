@@ -4,12 +4,14 @@ import Signup from "./components/Signup"
 import Home from "./components/Home";
 import Login from "./components/Login";
 import ProductList from "./components/ProductList";
+import AllProducts from "./components/AllProducts";
 
 function App() {
 
   const [currentUser, setCurrentUser] = useState("")
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
+  const [cart, setCart] = useState([])
 
   const history = useHistory()
   
@@ -62,7 +64,7 @@ const mappedCategories =  categories.map(category =>{
 
 const mappedProducts = categories.map(category => {
     return(<Route path = {`/categories/${category.id}`}>
-      <ProductList mappedCategories={mappedCategories} category={category}/>
+      <ProductList setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
     </Route>)
 })
   
@@ -85,9 +87,9 @@ const mappedProducts = categories.map(category => {
         <Route path="/login" >
          <Login setCurrentUser={setCurrentUser} />
         </Route>
-        {/* <Route path="/products" >
-         <ProductList products={products} />
-        </Route> */}
+        <Route path="/products" >
+         <AllProducts mappedCategories={mappedCategories} products={products} />
+        </Route>
         {mappedProducts}
       </Switch>
     // </div>
