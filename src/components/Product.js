@@ -5,11 +5,13 @@ import Typography from '@mui/material/Typography';
 import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
+import { useHistory } from "react-router";
 
 
 function Product({ cart, setCart, product}){
     const [quantity, setQuantity] = useState(0)
     const [addedtoCart, setAddedToCart] = useState(false)
+    const history = useHistory()
 
 
     function addItem(){
@@ -29,10 +31,14 @@ function Product({ cart, setCart, product}){
         console.log(cart)
     }
 
+    function handleChange(){
+        history.push(`/product/${product.id}`)
+    }
+
     return(
             <li className="product-card">
                 <Card sx={{ maxWidth: 345, minHeight: 550 }}>
-                <CardActionArea>
+                <CardActionArea onClick={handleChange} >
                 <CardMedia 
                  component="img"
                  height="400px"

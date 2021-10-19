@@ -34,7 +34,6 @@ function AllProducts({products, mappedCategories}){
         <>
         <Navbar mappedCategories={mappedCategories} />
         <div className="wrapper" >
-            <h1>test</h1>
         <nav>
             <ul >
             </ul>

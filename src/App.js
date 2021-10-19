@@ -5,6 +5,8 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import ProductList from "./components/ProductList";
 import AllProducts from "./components/AllProducts";
+import ProductPage from "./components/ProductPage";
+import Cart from "./components/Cart";
 
 function App() {
 
@@ -67,6 +69,12 @@ const mappedProducts = categories.map(category => {
       <ProductList setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
     </Route>)
 })
+
+const mappedProductPages = products.map(product =>{
+    return(<Route path = {`/product/${product.id}`}>
+    <ProductPage product={product} setCart={setCart} cart={cart} mappedCategories={mappedCategories}/>
+  </Route>)
+})
   
   return (
     // <div className="App">
@@ -87,10 +95,14 @@ const mappedProducts = categories.map(category => {
         <Route path="/login" >
          <Login setCurrentUser={setCurrentUser} />
         </Route>
-        <Route path="/products" >
+        <Route exaact path="/products" >
          <AllProducts mappedCategories={mappedCategories} products={products} />
         </Route>
+        <Route exaact path="/cart" >
+         <Cart mappedCategories={mappedCategories} products={products} />
+        </Route>
         {mappedProducts}
+        {mappedProductPages}
       </Switch>
     // </div>
   );

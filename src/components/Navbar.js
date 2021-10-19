@@ -19,6 +19,9 @@ function Navbar( {mappedCategories} ){
     function handleSwitchHome(){
         history.push("/")
     }
+    function handleCart(){
+        history.push("/cart")
+    }
 
     let storage = JSON.parse(localStorage.getItem("cart"))
 
@@ -44,7 +47,7 @@ function Navbar( {mappedCategories} ){
                     <AccountCircleOutlinedIcon sx={{fontSize: "35px", cursor: "pointer"}} value="/login" onClick={handleSwitchLogin} />
                 </li>
                 <li>
-                    <div className="inline" >
+                    <div onClick={handleCart} className="inline" >
                     <ShoppingCartIcon
                     sx={{color:"#a5362e", fontSize: "35px", cursor: "pointer"}}
                     />
