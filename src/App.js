@@ -11,6 +11,8 @@ import UserPage from "./components/UserPage";
 import AccountPage from "./components/AccountPage";
 import Addresses from "./components/Addresses";
 import Alladdresses from "./components/Alladdresses";
+import OrderHistory from "./components/OrderHistory";
+import Checkout from "./components/Checkout";
 
 function App() {
 
@@ -70,7 +72,7 @@ const mappedCategories =  categories.map(category =>{
 
 const mappedProducts = categories.map(category => {
     return(<Route path = {`/categories/${category.id}`}>
-      <ProductList setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
+      <ProductList currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
     </Route>)
 })
 
@@ -111,11 +113,17 @@ const mappedProductPages = products.map(product =>{
         <Route path="/addresses" >
           <Alladdresses currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
-        <Route exaact path="/products" >
+        <Route path="/order-history" >
+          <OrderHistory currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        </Route>
+        <Route path="/products" >
          <AllProducts mappedCategories={mappedCategories} products={products} />
         </Route>
-        <Route exaact path="/cart" >
-         <Cart mappedCategories={mappedCategories} products={products} />
+        <Route path="/cart" >
+         <Cart currentUser={currentUser} mappedCategories={mappedCategories} products={products} />
+        </Route>
+        <Route path="/checkout" >
+         <Checkout currentUser={currentUser} mappedCategories={mappedCategories} products={products} />
         </Route>
         {mappedProducts}
         {mappedProductPages}

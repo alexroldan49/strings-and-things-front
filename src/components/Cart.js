@@ -1,15 +1,17 @@
 import { Button, Drawer, Paper } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import Navbar from "./Navbar";
 
 
-function Cart({mappedCategories}){
+function Cart({ currentUser, mappedCategories}){
     let storage = JSON.parse(localStorage.getItem("cart"))
     const [cartProducts, setCartProducts] = useState([])
 
+    const history = useHistory()
+    
     function checkout(){
-
-        fetch("/")
+        history.push("/checkout")
     }
   
     const storageTotal = storage.map(item => item.price).reduce((prev, curr) => prev + curr, 0)
@@ -52,7 +54,7 @@ function Cart({mappedCategories}){
     
     return(
         <>
-        <Navbar mappedCategories={mappedCategories} />
+        <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
         <div className="inline" >
         <div >
             {mappedCart}
@@ -65,7 +67,7 @@ function Cart({mappedCategories}){
                         <h2>Subtotal</h2>
                         <h2>{`$${total}`}</h2>
                     </div>
-                    <Button variant="contained" >Checkout</Button>
+                    <Button onClick={checkout} variant="contained" >Checkout</Button>
                 </Paper>
             </div>
         </div>

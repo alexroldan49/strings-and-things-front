@@ -189,4 +189,59 @@ section{
   grid-template-columns: 33% 33% 33%;
   grid-template-rows: 33% 33% 33%;
 }
+.box2{
+    width: 400px;
+    height: 100px;
+    background-color: rgba(93, 107, 233, 0.938);
+    border-radius: 20px;
+    margin: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    text-align: center;
+    color: white;
+}
+.Checkout-page {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 969px;
+}
+.list-item{
+  height: 40px;
+  display: flex;
+  align-items: center;
+  transition: 0.5s
+}
+.list-item:hover{
+  color: rgb(0, 0, 0)
+}
+.checkout-box{
+  width: 500px;
+  min-height: 220px;
+  background-color: #cfcfcf;
+  border-radius: 4px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+  flex-direction: column;
+}
+/* .checkout-box2{
+  width: 500px;
+  height: 200px;
+  background-color: #a5362e;
+  border-radius: 4px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  text-align: center;
+} */
 /* style={{display: "flex", flexDirection: "column", minHeight: "250px", backgroundColor: "yellow"}}  */

@@ -9,7 +9,7 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 import Product from "./Product";
 
 
-function ProductList( { cart, setCart, category, mappedCategories} ){
+function ProductList( {currentUser, cart, setCart, category, mappedCategories} ){
 
    
     
@@ -19,7 +19,7 @@ function ProductList( { cart, setCart, category, mappedCategories} ){
 
     return(
         <>
-        <Navbar mappedCategories={mappedCategories} />
+        <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
         <div className="wrapper" >
         <nav>
             <ul >

@@ -23,7 +23,7 @@ function AccountPage( { mappedCategories, setCurrentUser, currentUser}){
 
     return(
         <>
-        <Navbar mappedCategories={mappedCategories} />
+        <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
         <h1>{`You are Logged in! welcome ${currentUser.username}`}</h1>
         <Button onClick={logout}>logout</Button>
         <div className="inline2" >
