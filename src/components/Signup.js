@@ -1,9 +1,13 @@
+import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 
 
-function Signup(){
-    const [username, setUsername] = useState("username...")
-    const [password, setPassword] = useState("password...")
+function Signup({setCurrentUser}){
+    const [username, setUsername] = useState("")
+    const [password, setPassword] = useState("")
+    const [email, setEmail] = useState("")
+    const history = useHistory()
     
     function handleUserChange(e){
       setUsername(e.target.value)
@@ -11,11 +15,15 @@ function Signup(){
     function handlePasswordChange(e){
       setPassword(e.target.value)
     }
+    function handleEmailChange(e){
+      setEmail(e.target.value)
+    }
   
     function handleSubmit(e){
       e.preventDefault()
       const user = {
         username: username,
+        email: email,
         password: password
       }
       fetch("/signup", {
@@ -25,7 +33,8 @@ function Signup(){
       })
       .then(r => {
         if (r.ok) {
-          r.json().then(user => console.log(user))
+          r.json().then(user => setCurrentUser(user))
+          .then(history.push("/"))
         }
       })
     }
@@ -35,9 +44,27 @@ function Signup(){
       <div>
            <h1>Signup</h1>
         <form onSubmit={handleSubmit}>
-          <input type="text" value={username} onChange={handleUserChange}  />
-          <input type="text" value={password} onChange={handlePasswordChange}  />
-          <button type="submit" value="Submit" >Submit</button>
+          <TextField 
+          label="username"
+          type="text"
+          value={username}
+          onChange={handleUserChange}
+          />
+          <TextField 
+          label="email"
+          type="text"
+          value={email}
+          onChange={handleEmailChange}
+          />
+          <TextField 
+          label="password"
+          type="password"
+          value={password}
+          onChange={handlePasswordChange}
+          />
+          {/* <input type="text" value={username} onChange={handleUserChange}  />
+          <input type="text" value={password} onChange={handlePasswordChange}  /> */}
+          <Button type="submit" >submit</Button>
         </form>
       </div>
     );

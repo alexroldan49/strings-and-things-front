@@ -7,6 +7,10 @@ import ProductList from "./components/ProductList";
 import AllProducts from "./components/AllProducts";
 import ProductPage from "./components/ProductPage";
 import Cart from "./components/Cart";
+import UserPage from "./components/UserPage";
+import AccountPage from "./components/AccountPage";
+import Addresses from "./components/Addresses";
+import Alladdresses from "./components/Alladdresses";
 
 function App() {
 
@@ -87,13 +91,25 @@ const mappedProductPages = products.map(product =>{
     //   <div></div>}
       <Switch>
         <Route exact path="/" >
-          <Home mappedCategories={mappedCategories} />
+          <Home currentUser={currentUser} mappedCategories={mappedCategories} />
         </Route>
         <Route path="/signup" >
-         <Signup/>
+         <Signup setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/login" >
          <Login setCurrentUser={setCurrentUser} />
+        </Route>
+        <Route path="/userpage" >
+         <UserPage />
+        </Route>
+        <Route path="/user-account-page" >
+          <AccountPage mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        </Route>
+        <Route path="/add-addresses" >
+          <Addresses mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+        </Route>
+        <Route path="/addresses" >
+          <Alladdresses currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route exaact path="/products" >
          <AllProducts mappedCategories={mappedCategories} products={products} />

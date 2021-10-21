@@ -8,12 +8,16 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useHistory } from "react-router";
 import MenuIcon from '@mui/icons-material/Menu';
 
-function Navbar( {mappedCategories} ){
+function Navbar( { currentUser, mappedCategories} ){
 
     const history = useHistory()
 
     function handleSwitchLogin(e){
-        history.push("/login")
+        if (currentUser) {
+            history.push("/user-account-page")
+        } else {
+            history.push("/userpage")
+        }
     }
 
     function handleSwitchHome(){

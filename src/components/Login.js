@@ -1,8 +1,11 @@
 import { TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
+import { useHistory } from "react-router";
 
 function Login( {setCurrentUser} ){
+    
+    const history = useHistory()
     
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -29,8 +32,9 @@ function Login( {setCurrentUser} ){
         }).then(r => {
             if (r.ok) {
                 r.json().then(user => setCurrentUser(user))
+                .then(history.push("/"))
             }else{
-                r.json().then(error => setError(error))
+                r.json().then(error => setError(error.errors))
             }
         })
     }
