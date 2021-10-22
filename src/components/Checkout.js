@@ -6,10 +6,14 @@ import Divider from '@mui/material/Divider';
 import AddressOption from './AddressOption'
 import { Button } from "@mui/material";
 import PaymentMethod from "./PaymentMethod";
+import { useHistory } from "react-router";
 
 
 function Checkout( {currentUser} ){
     const [address, setAddress] = useState("")
+    const [order, setOrder] = useState()
+
+    const history = useHistory()
 
     let date = new Date().toUTCString().slice(0, 16);
 
@@ -72,9 +76,11 @@ function Checkout( {currentUser} ){
             body: JSON.stringify(orderBody)
         }).then(r => {
             if (r.ok) {
-                r.jon().then()
+                r.json().then(completedOrder => setOrder(completedOrder))
+                .then(history.push("/"))
+                .then(localStorage.clear())
             } else {
-                
+                r.json().then(r => console.log(r.errors))
             }
         })
     }
@@ -110,7 +116,7 @@ function Checkout( {currentUser} ){
                         <Divider />
                         <div style={{backgroundColor: "rgb(31, 31, 31)", width:"inherit", color: "white"}} >
                             <h1>{`Total : $${total}`}</h1>
-                            <Button onClick={()=>console.log(date)} >Place Order</Button>
+                            <Button onClick={placeOrder} >Place Order</Button>
                         </div>
                     </div>
                 </div>

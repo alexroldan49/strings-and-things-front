@@ -29,6 +29,8 @@ code {
   padding: 0px 40px;
 }
 .logo {
+  font-family: 'Fleur De Leah', cursive;
+  font-size: 35px;
   cursor: pointer;
   margin-right: auto;
   color:white;
