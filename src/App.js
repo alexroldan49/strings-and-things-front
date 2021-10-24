@@ -13,6 +13,7 @@ import Addresses from "./components/Addresses";
 import Alladdresses from "./components/Alladdresses";
 import OrderHistory from "./components/OrderHistory";
 import Checkout from "./components/Checkout";
+import CompletedOrder from "./components/CompletedOrder";
 
 function App() {
 
@@ -20,6 +21,9 @@ function App() {
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
   const [cart, setCart] = useState([])
+  const [brand, setBrand] = useState("")
+  const [completedOrder, setCompletedOrder] = useState({})
+  const [orderHistory, setOrderHistory] = useState([])
 
   const history = useHistory()
   
@@ -27,11 +31,17 @@ function App() {
       history.push(e.target.value)
   }
 
+  function settingState(r){
+    setCurrentUser(r)
+    setOrderHistory(r.orders)
+  }
+
+  
  useEffect(()=>{
     fetch("/me")
     .then(r => {
       if (r.ok) {
-        r.json().then(r => setCurrentUser(r))
+        r.json().then(r => settingState(r))
       }else{
         r.json().then(r => console.log(r))
       }
@@ -60,6 +70,7 @@ function App() {
 }
 
 function handleChange(id){
+  setBrand("")
   history.push(`/categories/${id}`)
 }
 
@@ -72,7 +83,7 @@ const mappedCategories =  categories.map(category =>{
 
 const mappedProducts = categories.map(category => {
     return(<Route path = {`/categories/${category.id}`}>
-      <ProductList currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
+      <ProductList brand={brand} setBrand={setBrand} currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
     </Route>)
 })
 
@@ -114,7 +125,7 @@ const mappedProductPages = products.map(product =>{
           <Alladdresses currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/order-history" >
-          <OrderHistory currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <OrderHistory orderHistory={orderHistory} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/products" >
          <AllProducts mappedCategories={mappedCategories} products={products} />
@@ -123,7 +134,10 @@ const mappedProductPages = products.map(product =>{
          <Cart currentUser={currentUser} mappedCategories={mappedCategories} products={products} />
         </Route>
         <Route path="/checkout" >
-         <Checkout currentUser={currentUser} mappedCategories={mappedCategories} products={products} />
+         <Checkout orderHistory={orderHistory} setOrderHistory={setOrderHistory} setCompletedOrder={setCompletedOrder} currentUser={currentUser} />
+        </Route>
+        <Route path="/order-complete" >
+         <CompletedOrder completedOrder={completedOrder} setCompletedOrder={setCompletedOrder} currentUser={currentUser} />
         </Route>
         {mappedProducts}
         {mappedProductPages}

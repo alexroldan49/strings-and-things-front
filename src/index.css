@@ -21,6 +21,7 @@ code {
   justify-content: flex-end;
   align-items: center;
   padding: 30px 10%;
+  z-index: 8;
 }
 .navbar li{
   list-style-type: none;
@@ -83,6 +84,8 @@ section{
   grid-template-rows: 33% 33% 33%;
   width: 80%;
   float: right;
+  margin-left: 400px;
+  margin-top: 40px;
 }
 .product-card{
   margin-bottom: 500px;
@@ -130,6 +133,11 @@ section{
   flex-direction:row;
   flex-wrap: wrap;
   justify-content: center;
+}
+.inline3{
+  display: flex;
+  flex-direction:row;
+  flex-wrap: wrap;
 }
 .checkout{
   width: 800px;
@@ -232,6 +240,66 @@ section{
   flex-wrap: wrap;
   text-align: center;
   flex-direction: column;
+}
+.left-drawer{
+    height: 750px;
+    width: 330px;
+    background-color: rgb(214, 214, 214);
+    position: fixed;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+}
+.filter-sort{
+  min-width: 250px;
+  height: 500px;
+  background-color:rgb(230, 230, 230) ;
+  padding: 20px;
+  box-shadow: 1px 5px 5px rgba(68, 68, 68, 0.6);
+  margin-top: 30px;
+  width: fit-content;
+}
+.list-item2{
+  transition: 0.5s
+}
+.list-item2:hover{
+  color: rgb(255, 255, 255);
+}
+.completedOrder{
+  height: 800px;
+  width: 1300px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  border-radius: 5px;
+  box-shadow: 1px 10px 10px rgba(68, 68, 68, 0.6);
+}
+.middle2{
+  height: 969px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(45deg, rgb(129, 42, 42), rgb(158, 42, 42),  rgb(204, 114, 31), rgb(200, 186, 105));
+  background-size: 600%;
+  animation: bg-gradient 6s infinite alternate
+}
+@keyframes bg-gradient{
+  0%{
+    background-position: left;
+  }
+  100%{
+    background-position: right;
+  }
+}
+.apart{
+  display: flex;
+  justify-content: space-around;
+  width:600px;
+  border-bottom:dashed gray;
+  border-left:solid gray;
+  border-right:solid gray;
 }
 /* .checkout-box2{
   width: 500px;

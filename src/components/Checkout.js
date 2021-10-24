@@ -7,12 +7,18 @@ import AddressOption from './AddressOption'
 import { Button } from "@mui/material";
 import PaymentMethod from "./PaymentMethod";
 import { useHistory } from "react-router";
+import { NavLink } from "react-router-dom";
 
 
-function Checkout( {currentUser} ){
+function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrder} ){
     const [address, setAddress] = useState("")
     const [order, setOrder] = useState()
+    const [cardNumber, setCardNumber] = useState("")
+    const [expiration, setExpiration] = useState("")
+    const [cvc, setCvc] = useState("")
 
+    
+    
     const history = useHistory()
 
     let date = new Date().toUTCString().slice(0, 16);
@@ -68,6 +74,11 @@ function Checkout( {currentUser} ){
         product_orders: [...productIds]
     }
 
+    function setStates(order){
+        setCompletedOrder(order)
+        setOrderHistory( [...orderHistory, order])
+    }
+    
     function placeOrder(){
 
         fetch("/orders", {
@@ -76,8 +87,8 @@ function Checkout( {currentUser} ){
             body: JSON.stringify(orderBody)
         }).then(r => {
             if (r.ok) {
-                r.json().then(completedOrder => setOrder(completedOrder))
-                .then(history.push("/"))
+                r.json().then(order => setStates(order))
+                .then(history.push("/order-complete"))
                 .then(localStorage.clear())
             } else {
                 r.json().then(r => console.log(r.errors))
@@ -102,7 +113,13 @@ function Checkout( {currentUser} ){
                     </div>
                     <div className="checkout-box">
                         <h3>Payment Method</h3>
-                        <PaymentMethod />
+                        <PaymentMethod cardNumber={cardNumber}
+                            setCardNumber={setCardNumber}
+                            expiration={expiration}
+                            setExpiration={setExpiration}
+                            cvc={cvc}
+                            setCvc={setCvc}
+                         />
                     </div >
                 </div>
                 <div>
@@ -116,7 +133,10 @@ function Checkout( {currentUser} ){
                         <Divider />
                         <div style={{backgroundColor: "rgb(31, 31, 31)", width:"inherit", color: "white"}} >
                             <h1>{`Total : $${total}`}</h1>
-                            <Button onClick={placeOrder} >Place Order</Button>
+                            { address.length< 1 || cardNumber.length < 1 || expiration < 3 || cvc < 1 ?
+                            <Button className="list-item2" sx={{backgroundColor: "white", width: "450px", margin: "10px", fontWeight: "bold", fontSize: "20px"}} onClick={placeOrder} disabled>Place Order</Button> :
+                            <Button className="list-item2" sx={{backgroundColor: "white", width: "450px", margin: "10px", fontWeight: "bold", fontSize: "20px"}} onClick={placeOrder}>Place Order</Button>
+                             }
                         </div>
                     </div>
                 </div>

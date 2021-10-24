@@ -1,5 +1,5 @@
 import { Input, InputAdornment, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import { InputLabel } from "@mui/material";
@@ -8,8 +8,12 @@ import SearchIcon from '@mui/icons-material/Search';
 import { useHistory } from "react-router";
 import MenuIcon from '@mui/icons-material/Menu';
 
-function Navbar( { currentUser, mappedCategories} ){
+function Navbar( { setBrand, currentUser, mappedCategories} ){
 
+    let stored = JSON.parse(localStorage.getItem("cart"))
+
+    const [emptyCartMessage, setEmptyCartMessage] = useState(false)
+    
     const history = useHistory()
 
     function handleSwitchLogin(e){
@@ -24,7 +28,14 @@ function Navbar( { currentUser, mappedCategories} ){
         history.push("/")
     }
     function handleCart(){
-        history.push("/cart")
+        if (stored) {
+            history.push("/cart")
+        } else {
+            setEmptyCartMessage(true)
+            setTimeout(() => {
+                setEmptyCartMessage(false)
+              }, 2500);
+        }
     }
 
     let storage = JSON.parse(localStorage.getItem("cart"))
@@ -55,8 +66,8 @@ function Navbar( { currentUser, mappedCategories} ){
                     <ShoppingCartIcon
                     sx={{color:"#a5362e", fontSize: "35px", cursor: "pointer"}}
                     />
-                    {localStorage.cart? <div><h4>{storage.length}</h4></div> : <div></div> }
-                    
+                    {localStorage.cart  ? <div><h4>{storage.length}</h4></div> : <div></div> }
+                    { emptyCartMessage ?  <p style={{color: "orange", position: "fixed", marginTop: "40px"}} >Cart Is currently Empty</p> : "" }
                     </div>
                 </li>
             </ul>

@@ -1,22 +1,27 @@
 import React from "react";
 
 
-function OrderHistory({currentUser}){
+function OrderHistory({orderHistory, currentUser}){
 
-    const mappedOrders = currentUser.orders.map(order =>{
-       return( <div className="box2">
+    
+    
+    const mappedOrders = orderHistory.map(order =>{
+       return( <div>
             <p>{order.status}</p>
             <p>{order.order_date}</p>
             <p>{order.order_total}</p>
             <p>{order.shipping}</p>
-            <p>{order.status}</p>
         </div>)
     })
 
     return(
         <>
-        <h2>order History</h2>
-        {mappedOrders}
+        <div className="middle" >
+            <h2>order History</h2>
+            
+            {mappedOrders ? mappedOrders : ""}
+            
+        </div>
         </>
     )
 }

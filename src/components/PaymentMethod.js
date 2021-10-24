@@ -10,15 +10,28 @@ import CreditCardOutlinedIcon from '@mui/icons-material/CreditCardOutlined';
 import AccessTimeOutlinedIcon from '@mui/icons-material/AccessTimeOutlined';
 
 
-function PaymentMethod(){
+function PaymentMethod( {cardNumber, setCardNumber, expiration, setExpiration, cvc, setCvc} ){
 
+    function handleInput(e){
+        const target = e.target.value
+        const id = e.target.id
+        if (id == "cardNumber") {
+            setCardNumber(target)
+        } else if(id == "expirationDate") {
+            setExpiration(target)
+        } else if(id == "cvc"){
+            setCvc(target)
+        }
+    }
 
     return(
         <div className="column" >
             <TextField
             sx={{width: "300px"}}
-                id="input-with-icon-textfield"
+                id="cardNumber"
+                onChange={handleInput}
                 label="Card Number"
+                value={cardNumber}
                 placeholder="Enter Card Number..."
                 InputProps={{
                 startAdornment: (
@@ -32,8 +45,10 @@ function PaymentMethod(){
             <div style={{marginBottom: "20px"}} >
             <TextField
                 sx={{width: "130px"}}
-                id="input-with-icon-textfield"
+                id="expirationDate"
+                onChange={handleInput}
                 label="Expiration Date"
+                value={expiration}
                 InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
@@ -45,8 +60,10 @@ function PaymentMethod(){
             />
             <TextField
                 sx={{width: "130px", marginLeft: 3}}
-                id="input-with-icon-textfield"
+                id="cvc"
+                onChange={handleInput}
                 label="CVC"
+                value={cvc}
                 InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
