@@ -7,10 +7,10 @@ import FormLabel from '@mui/material/FormLabel';
 import { Category } from '@mui/icons-material';
 
 
-function LeftDrawer({ filterItems, brand, setBrand, category}){
+function AllProductsDrawer({ filterItems, brand, setBrand, category, products}){
 
 
-  const mappedBrands = category.products.map(prod =>{
+  const mappedBrands = products.map(prod =>{
       return prod.brand
   })
   
@@ -49,4 +49,4 @@ function LeftDrawer({ filterItems, brand, setBrand, category}){
     );
   }
 
-  export default LeftDrawer
+  export default AllProductsDrawer

@@ -14,6 +14,7 @@ import Alladdresses from "./components/Alladdresses";
 import OrderHistory from "./components/OrderHistory";
 import Checkout from "./components/Checkout";
 import CompletedOrder from "./components/CompletedOrder";
+import BottomNav from "./components/BottomNav";
 
 function App() {
 
@@ -84,6 +85,7 @@ const mappedCategories =  categories.map(category =>{
 const mappedProducts = categories.map(category => {
     return(<Route path = {`/categories/${category.id}`}>
       <ProductList brand={brand} setBrand={setBrand} currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
+      <BottomNav />
     </Route>)
 })
 
@@ -105,6 +107,7 @@ const mappedProductPages = products.map(product =>{
       <Switch>
         <Route exact path="/" >
           <Home currentUser={currentUser} mappedCategories={mappedCategories} />
+          <BottomNav/>
         </Route>
         <Route path="/signup" >
          <Signup setCurrentUser={setCurrentUser} />
@@ -122,13 +125,13 @@ const mappedProductPages = products.map(product =>{
           <Addresses mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/addresses" >
-          <Alladdresses currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Alladdresses setCart={setCart} cart={cart} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/order-history" >
           <OrderHistory orderHistory={orderHistory} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/products" >
-         <AllProducts mappedCategories={mappedCategories} products={products} />
+         <AllProducts brand={brand} setBrand={setBrand} categories={categories} mappedCategories={mappedCategories} products={products} />
         </Route>
         <Route path="/cart" >
          <Cart currentUser={currentUser} mappedCategories={mappedCategories} products={products} />

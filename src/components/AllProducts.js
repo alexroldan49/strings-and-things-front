@@ -1,49 +1,53 @@
-import React from "react";
+import React, { useState } from "react";
 import Navbar from "./Navbar";
 import { Card, CardActionArea, CardContent } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import Typography from '@mui/material/Typography';
+import LeftDrawer from "./LeftDrawer";
+import Product from "./Product";
+import AllProductsDrawer from "./AllProductsDrawer";
+import BottomNav from "./BottomNav";
 
 
-function AllProducts({products, mappedCategories}){
+function AllProducts({ cart, setCart, categories, products, mappedCategories, brand, setBrand}){
+
+    const mappedAllProductCategories = categories.map(category=>{
+        return category.products
+    })
+
+    const [prods, setProds] = useState([])
+    
+    const categ = products.map(pro=>{
+        return pro
+    })
+
+    let mappedProds = prods.map( product => {
+        return( <Product cart={cart} setCart={setCart} product={product} />)
+})
+
+    function filterItems(e){
+        setProds(products.filter(item=>{
+            return item.brand === e.target.value
+        }))
+    }
 
     const mappedCards = products.map( product => {
-        return(<li className="product-card">
-            <Card sx={{ maxWidth: 345, minHeight: 550 }}>
-            <CardActionArea>
-            <CardMedia 
-             component="img"
-             height="400px"
-             image={product.image}
-             alt={product.name}
-             />
-             <CardContent>
-                <Typography sx={{textAlign: "center", marginTop: "30px"}} gutterBottom variant="h5" component="div">
-                    {product.name}
-                </Typography>
-                <Typography sx={{marginLeft: "20px"}} variant="h6" color="green">
-                    {`$${product.price}`}
-                </Typography>
-             </CardContent>
-            </CardActionArea>
-            </Card>
-            </li>)
+        return(<Product cart={cart} setCart={setCart} product={product}/>)
 })
+function check(){
+    console.log(categories)
+}
 
     return(
         <>
-        <Navbar mappedCategories={mappedCategories} />
+        <AllProductsDrawer filterItems={filterItems} category={categ} brand={brand} setBrand={setBrand} products={products} />
+        <Navbar mappedCategories={mappedCategories} category={categ} />
         <div className="wrapper" >
-        <nav>
-            <ul >
-            </ul>
-        </nav>
-        <div className="product-grid">
-        {mappedCards}
+            <div className="product-grid">
+            {!brand ? mappedCards : mappedProds}
+            </div>
         </div>
-
-        </div>
-
+        <BottomNav />
         </>
     )
 }

@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Rating from '@mui/material/Rating';
 import Reviews from "./Reviews";
+import BottomNav from "./BottomNav";
 
 
 function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
@@ -82,14 +83,15 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
     
     return(
         <>
-        <Navbar mappedCategories={mappedCategories} />
+        <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
         <div className="product-page" >
             <div >
                 <img width="575px" height="575px" src={image}  />
                 <div style={{marginLeft: "150px", marginTop: "20px"}} >
                 <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.image}  />
-                <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.back_image}  />
-                <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.third_image}  />
+                {product.back_image ? <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.back_image}  /> : ""}
+                {product.third_image ? <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.third_image}  /> : "" }
+                
                 </div>
             </div>
             <div style={{width: "600px", MaxHeight: "600px", display: "flex", justifyContent: "center", padding: "40px", alignItems: "center", flexDirection: "column"}} >
@@ -159,6 +161,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
                {mappedReviews}
             </div>
         </div>
+        <BottomNav />
         </>
     )
 }

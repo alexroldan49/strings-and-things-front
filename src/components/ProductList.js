@@ -8,6 +8,7 @@ import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRound
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import Product from "./Product";
 import LeftDrawer from "./LeftDrawer";
+import BottomNav from "./BottomNav";
 
 
 function ProductList( { brand, setBrand, currentUser, cart, setCart, category, mappedCategories} ){
@@ -15,35 +16,12 @@ function ProductList( { brand, setBrand, currentUser, cart, setCart, category, m
     
     const [prods, setProds] = useState([])
 
-    function filterProducts(){
-        if (brand === "Fender") {
-           setProds(category.products.filter(item=>{
-                return item.brand === "Fender"
-            }))
-        } else if(brand === "Yamaha") {
-            setProds(category.products.filter(item=>{
-                return item.brand === "Yamaha"
-            }))
-        } else if(brand === "Gibson") {
-            setProds(category.products.filter(item=>{
-                return item.brand === "Gibson"
-            }))
-        }  else if(brand === "Epiphone") {
-            setProds(category.products.filter(item=>{
-                return item.brand === "Epiphone"
-            }))
-        } else if(brand === "Pearl") {
-            setProds(category.products.filter(item=>{
-                return item.brand === "Pearl"
-            }))
-        } else if(brand === "Tama") {
-            setProds(category.products.filter(item=>{
-                return item.brand === "Tama"
-            }))
-        } else{
-            return category.products
-        }
+    function filterItems(e){
+        setProds(category.products.filter(item=>{
+            return item.brand === e.target.value
+        }))
     }
+    
     let mappedProds = prods.map( product => {
         return( <Product cart={cart} setCart={setCart} product={product} />)
 })
@@ -51,18 +29,17 @@ function ProductList( { brand, setBrand, currentUser, cart, setCart, category, m
     const mappedCards = category.products.map( product => {
             return( <Product cart={cart} setCart={setCart} product={product} />)
     })
-
+    
     return(
         <>
+        <LeftDrawer filterItems={filterItems} category={category} brand={brand} setBrand={setBrand} />
         <Navbar setBrand={setBrand} currentUser={currentUser} mappedCategories={mappedCategories} />
-        <LeftDrawer category={category} filterProducts={filterProducts} brand={brand} setBrand={setBrand} />
         <div className="inline3" >
         <div className="product-grid">
         {!brand ? mappedCards : mappedProds}
         </div>
 
         </div>
-
         </>
     )
 }
