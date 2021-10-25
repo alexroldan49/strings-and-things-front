@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ButtonGroup, Card, CardActionArea, CardContent, IconButton } from "@mui/material";
 import { CardMedia } from "@mui/material";
 import Typography from '@mui/material/Typography';
@@ -6,6 +6,7 @@ import AddCircleOutlinedIcon from '@mui/icons-material/AddCircleOutlined';
 import KeyboardArrowUpRoundedIcon from '@mui/icons-material/KeyboardArrowUpRounded';
 import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownRounded';
 import { useHistory } from "react-router";
+import Rating from '@mui/material/Rating';
 
 
 function Product({ cart, setCart, product}){
@@ -35,42 +36,48 @@ function Product({ cart, setCart, product}){
         history.push(`/product/${product.id}`)
     }
 
+    
+    
     return(
             <li className="product-card">
                 <Card sx={{ maxWidth: 345, minHeight: 550 }}>
                 <CardActionArea onClick={handleChange} >
                 <CardMedia 
                  component="img"
-                 height="400px"
+                 height="340px"
                  image={product.image}
                  alt={product.name}
                  />
                  <CardContent>
-                    <Typography sx={{textAlign: "center", marginTop: "30px"}} gutterBottom variant="h5" component="div">
+                    <Typography sx={{textAlign: "center", marginTop: "30px", fontSize: "20px"}} gutterBottom variant="h5" component="div">
                         {product.name}
                     </Typography>
+                    <div style={{display: "flex", justifyContent: "center"}} >
+                    <Rating name="read-only" value={product.rating_average} readOnly />
+                    </div>
                     <Typography sx={{marginLeft: "20px"}} variant="h6" color="green">
                         {`$${product.price}`}
                     </Typography>
                  </CardContent>
                 </CardActionArea>
                 <div className="row" >
-                <ButtonGroup
-                    sx={{marginRight: "5px"}}
-                    orientation="vertical"
-                    aria-label="vertical outlined button group"
-                >
-                <IconButton >
-                    <KeyboardArrowUpRoundedIcon sx={{color: "rgb(255, 136, 0)"}} />
-                </IconButton>
-                <IconButton>
-                    <AddCircleOutlinedIcon onClick={addItem} sx={{color: "rgb(255, 136, 0)"}} />
-                </IconButton>
-                <IconButton>
-                    <KeyboardArrowDownRoundedIcon sx={{color: "rgb(255, 136, 0)"}} />
-                </IconButton>
-                </ButtonGroup>
-                    {addedtoCart ? <h3 className="added">Added to Cart</h3> : <div></div> }
+                    <ButtonGroup
+                        sx={{marginRight: "5px"}}
+                        orientation="vertical"
+                        aria-label="vertical outlined button group"
+                    >
+                        <IconButton >
+                            <KeyboardArrowUpRoundedIcon sx={{color: "rgb(255, 136, 0)"}} />
+                        </IconButton>
+                        <IconButton>
+                            <AddCircleOutlinedIcon onClick={addItem} sx={{color: "rgb(255, 136, 0)"}} />
+                        </IconButton>
+                        <IconButton>
+                            <KeyboardArrowDownRoundedIcon sx={{color: "rgb(255, 136, 0)"}} />
+                        </IconButton>
+                    </ButtonGroup>
+                        
+                        {addedtoCart ? <h3 className="added">Added to Cart</h3> : <div></div> }
                 </div>
                 </Card>
                 </li>)

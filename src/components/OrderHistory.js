@@ -15,14 +15,14 @@ function OrderHistory({orderHistory, currentUser}){
     })
 
     return(
-        <>
+        <div>
         <div className="middle" >
             <h2>order History</h2>
             
             {mappedOrders ? mappedOrders : ""}
             
         </div>
-        </>
+        </div>
     )
 }
 

@@ -301,6 +301,25 @@ section{
   border-left:solid gray;
   border-right:solid gray;
 }
+.justify-center{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+.description{
+    border: solid rgb(214, 214, 214);
+    padding: 30px;
+}
+.justify-center-reviews{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  width: 900px;
+  min-height: 200px;
+  border-top: solid rgb(177, 177, 177);
+}
 /* .checkout-box2{
   width: 500px;
   height: 200px;

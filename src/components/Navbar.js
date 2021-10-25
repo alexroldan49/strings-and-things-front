@@ -16,6 +16,8 @@ function Navbar( { setBrand, currentUser, mappedCategories} ){
     
     const history = useHistory()
 
+    
+
     function handleSwitchLogin(e){
         if (currentUser) {
             history.push("/user-account-page")

@@ -16,6 +16,7 @@ function LeftDrawer({brand, setBrand, category, filterProducts}){
   
   const uniqueBrands = [...new Set(mappedBrands)]
 
+
   const handleChange = (e) => {
     setBrand(e.target.value)
     filterProducts()
@@ -39,7 +40,7 @@ function LeftDrawer({brand, setBrand, category, filterProducts}){
                 value={brand ? brand : ""}
                 onClick={handleChange}
               >
-              <FormControlLabel value={""} control={<Radio />} label="none" />
+              <FormControlLabel value={""} control={<Radio />} label="All" />
              {mappedOptions}
             </RadioGroup>
           </FormControl>

@@ -89,7 +89,7 @@ const mappedProducts = categories.map(category => {
 
 const mappedProductPages = products.map(product =>{
     return(<Route path = {`/product/${product.id}`}>
-    <ProductPage product={product} setCart={setCart} cart={cart} mappedCategories={mappedCategories}/>
+    <ProductPage currentUser={currentUser} product={product} setCart={setCart} cart={cart} mappedCategories={mappedCategories}/>
   </Route>)
 })
   
