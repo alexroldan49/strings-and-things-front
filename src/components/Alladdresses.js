@@ -42,10 +42,12 @@ function Alladdresses({currentUser}){
     return(
         <>
             <div>
-                <div className="column" >
-                    <h2>Saved Addresses</h2>
-                    <div className="grid">
-                        {mappedAddresses}
+                <div className="middle" >
+                    <div className="column">
+                        <h2>Saved Addresses</h2>
+                        <div >
+                            {mappedAddresses}
+                        </div>
                     </div>
                 </div>
                 <Button onClick={handleHistory} color="secondary" >Add Shipping Address</Button>

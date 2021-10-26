@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
-import { useDemoData } from '@mui/x-data-grid-generator'
+
 
 function OrderHistory({orderHistory, currentUser}){
 
@@ -14,28 +14,47 @@ function OrderHistory({orderHistory, currentUser}){
             <p>{order.shipping}</p>
         </div>)
     })
-    const { data } = useDemoData({
-        dataSet: 'Commodity',
-        rowLength: 10,
-        maxColumns: 6,
-      });
-    const [sortModel, setSortModel] = React.useState([
+    const columns = [
+
         {
-          field: 'commodity',
-          sort: 'asc',
+          field: 'status',
+          headerName: 'Status',
+          width: 180,
         },
-      ]);
+        {
+          field: 'order_date',
+          headerName: 'Order Date',
+          width: 150,
+        },
+        {
+          field: 'order_total',
+          headerName: '$ Total Amount',
+          type: 'number',
+          width: 150,
+        },
+        {
+          field: 'shipping',
+          headerName: 'Shipping Address',
+          description: 'This column has a value getter and is not sortable.',
+          width: 350,
+        },
+      ];
+
+      const rows = [...orderHistory]
 
     return(
         <div>
         <div className="middle" >
+          
+            <div style={{ height: 700, width: '60%' }}>
             <h2>order History</h2>
-            <div style={{ height: 400, width: '100%' }}>
-            <DataGrid
-                {...data}
-                sortModel={sortModel}
-                onSortModelChange={(model) => setSortModel(model)}
-            />
+                <DataGrid
+                    rows={rows}
+                    columns={columns}
+                    pageSize={10}
+                    rowsPerPageOptions={[5]}
+                    disableSelectionOnClick
+                />
             </div>
             {/* {mappedOrders ? mappedOrders : ""} */}
             

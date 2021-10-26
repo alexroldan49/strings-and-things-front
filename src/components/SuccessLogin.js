@@ -24,8 +24,8 @@ export default function SuccessLogin( { open, setOpen, currentUser} ) {
 
   return (
     <Stack spacing={2} sx={{ width: '100%' }}>
-      <Snackbar open={open} autoHideDuration={6000} onClose={handleClose}>
-        { currentUser ? <Alert onClose={handleClose} severity="success" sx={{ width: '200%' }}>
+      <Snackbar open={open} autoHideDuration={5000} onClose={handleClose}>
+        { currentUser ? <Alert onClose={handleClose} severity="success" sx={{ width: '500%', height:"500%", fontSize: "20px" }}>
           {`${currentUser.username} logged in!`}
         </Alert> : "" }
       </Snackbar>
