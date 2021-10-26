@@ -2,6 +2,9 @@ import { TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Button } from "@mui/material";
 import { useHistory } from "react-router";
+import { height } from "@mui/system";
+import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
+
 
 function Login( {setCurrentUser} ){
     
@@ -41,24 +44,33 @@ function Login( {setCurrentUser} ){
     
     
     return(
-        <div>
-            <h1>Login</h1>
-            <form onSubmit={handleSubmit} >
-            <TextField 
-            label="username"
-            type="text"
-            value={username}
-            onChange={handleUsername}
-             />
-            <TextField
-             label="password"
-             type="text"
-             value={password}
-             onChange={handlePassword}
-            />
-            <Button type="submit" >Login</Button>
-            <Typography color="error" >{error}</Typography>
-            </form>
+        <div style={{backgroundImage: "url(https://i.ibb.co/HLvdT3H/guitar-strings-wallpaper-58788-60564-hd-wallpapers.jpg)", backgroundSize: "100%", backgroundColor: "black" }} className="middle" >
+            <div style={{ height: "750px",width: "600px", backgroundColor: "rgba(68, 68, 68, 0.3)",display: "flex",justifyContent: "center", alignItems: "center"}}>
+            <div style={{textAlign: "center", height: "650px", backgroundColor: "white", justifyContent: "center", width: "500px", alignItems: "center", gap: "10px"}} className="column" >
+            <h1 style={{fontFamily: 'Fleur De Leah', fontSize: "40px"}} >Strings and Things</h1>
+                <FormatAlignRightIcon sx={{fontSize: "30px"}}  />
+                <h1>Login</h1>
+                <p>enter username and password to login</p>
+                <form style={{alignItems: "center"}} className="column" onSubmit={handleSubmit} >
+                <TextField 
+                sx={{backgroundColor: "white", width: "300px" }}
+                label="username"
+                type="text"
+                value={username}
+                onChange={handleUsername}
+                />
+                <TextField
+                sx={{backgroundColor: "white", width: "300px" }}
+                label="password"
+                type="text"
+                value={password}
+                onChange={handlePassword}
+                />
+                <Typography color="error" >{error}</Typography>
+                <Button sx={{backgroundColor: "rgb(255, 136, 0)"}} variant="contained" type="submit" >Login</Button>
+                </form>
+            </div>
+            </div>
         </div>
     )
 }

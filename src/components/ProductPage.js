@@ -18,6 +18,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
     const [reviewCount, setReviewCount] = useState(product.reviews.length)
     const [stars, setStars] = useState(product.rating_average)
     const history = useHistory()
+    const [zoom, setZoom] = useState(false)
 
     const reviewBody = {
         comment: comment,
@@ -26,6 +27,10 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
         product_id: product.id
     }
 
+    function toggleZoom(){
+        setZoom(!zoom)
+    }
+    
     function newAverage(){
         let added = stars + rating
         if (product.reviews.length >= 1){
@@ -86,7 +91,8 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
         <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
         <div className="product-page" >
             <div >
-                <img width="575px" height="575px" src={image}  />
+                {!zoom ? <img onClick={toggleZoom} width="575px" height="575px" src={image}  /> : <img onClick={toggleZoom} className="zoomed-in" width="575px" height="575px" src={image}  /> }
+                
                 <div style={{marginLeft: "150px", marginTop: "20px"}} >
                 <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.image}  />
                 {product.back_image ? <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.back_image}  /> : ""}
