@@ -4,14 +4,14 @@ import Navbar from "./Navbar";
 import HomeContent from "./HomeContent";
 import ProductList from "./ProductList";
 
-function Home({currentUser, mappedCategories}){
+function Home({currentUser, mappedCategories, handleSearchBar, setProducts, prodsMemory, products}){
 
 
 
 return(
     <div className="container">
         <section className="section-one" >
-            <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
+            <Navbar products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
             <HomeContent mappedCategories={mappedCategories}/>
         </section>
         <section className="section-two" >

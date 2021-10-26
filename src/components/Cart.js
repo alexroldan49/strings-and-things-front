@@ -60,8 +60,10 @@ function Cart({ currentUser, mappedCategories}){
             {mappedCart}
         </div>
             <div style={{width: "60%", display: "flex", justifyContent: "center"}} >
-                <Paper className="checkout" elevation={24} >
+                {mappedList.length <=5 ?
+                    <Paper className="checkout" elevation={24} >
                     <h1>Shopping Cart</h1>
+                    <div className="item" ></div>
                     {mappedList}
                     <div style={{alignSelf: "flex-end"}} >
                         <h2>Subtotal</h2>
@@ -69,6 +71,18 @@ function Cart({ currentUser, mappedCategories}){
                     </div>
                     <Button onClick={checkout} variant="contained" >Checkout</Button>
                 </Paper>
+                :
+                <Paper className="item-unfixed" elevation={24} >
+                <h1>Shopping Cart</h1>
+                <div className="item" ></div>
+                {mappedList}
+                <div style={{alignSelf: "flex-end"}} >
+                    <h2>Subtotal</h2>
+                    <h2>{`$${total}`}</h2>
+                </div>
+                <Button sx={{marginBottom:"30px"}} onClick={checkout} variant="contained" >Checkout</Button>
+            </Paper>
+                }
             </div>
         </div>
         </>

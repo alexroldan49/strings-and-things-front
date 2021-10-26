@@ -75,7 +75,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
                 r.json().then(rev => setReviews([...reviews, rev])).then(newAverage())
                 .then(setComment("")).then(setRating(0)).then(setReviewCount(reviewCount + 1))
             } else {
-                r.json().then(r => setErrorMessages(r.errors.full_messages))
+                r.json().then(r => setErrorMessages(r.errors.full_message))
             }
         })
         

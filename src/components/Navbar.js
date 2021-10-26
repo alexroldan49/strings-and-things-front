@@ -7,16 +7,21 @@ import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined
 import SearchIcon from '@mui/icons-material/Search';
 import { useHistory } from "react-router";
 import MenuIcon from '@mui/icons-material/Menu';
+import UnAuthProfile from './UnAuthProfile';
+import Box from '@mui/material/Box';
 
-function Navbar( { setBrand, currentUser, mappedCategories} ){
+function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, setProducts, prodsMemory, products} ){
 
     let stored = JSON.parse(localStorage.getItem("cart"))
 
     const [emptyCartMessage, setEmptyCartMessage] = useState(false)
+    const [search, setSearch] = useState("")
     
     const history = useHistory()
 
-    
+    function handleChange(e){
+        setSearch(e.target.value)
+    }
 
     function handleSwitchLogin(e){
         if (currentUser) {
@@ -28,6 +33,9 @@ function Navbar( { setBrand, currentUser, mappedCategories} ){
 
     function handleSwitchHome(){
         history.push("/")
+        if(products !== prodsMemory){
+            setProducts(prodsMemory)
+        }
     }
     function handleCart(){
         if (stored) {
@@ -50,7 +58,15 @@ function Navbar( { setBrand, currentUser, mappedCategories} ){
             </div>
             <ul>
                 <li>
+                    {/* <form onSubmit={(e)=>handleSearchBar(e, search)}> */}
+                    {/* <Box
+                        component="form"
+                        onSubmit={handleSearchBar}
+                    > */}
                     <Input
+                    id={search}
+                    value={search}
+                    onChange={(e)=>handleChange(e)}
                     placeholder="Search Item..."
                     sx={{backgroundColor:"white"}}
                     id="input-with-icon-adornment"
@@ -59,9 +75,15 @@ function Navbar( { setBrand, currentUser, mappedCategories} ){
                           <SearchIcon sx={{fontSize: "30px"}} />
                         </InputAdornment>}
                     />
+                    <button value={search} onClick={handleSearchBar} type="submit" >search</button>
+                    {/* </Box> */}
+                    {/* </form> */}
                 </li>
                 <li>
-                    <AccountCircleOutlinedIcon sx={{fontSize: "35px", cursor: "pointer"}} value="/login" onClick={handleSwitchLogin} />
+                    {currentUser ? <AccountCircleOutlinedIcon sx={{fontSize: "35px", cursor: "pointer"}} value="/login" onClick={handleSwitchLogin} />
+                    : < UnAuthProfile /> }
+                    
+                    
                 </li>
                 <li>
                     <div onClick={handleCart} className="inline" >

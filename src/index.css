@@ -335,6 +335,15 @@ section{
   position: relative;
   z-index: 5;
 }
+.item-unfixed{
+  width: 800px;
+  min-height: 650px;
+  text-align: center;
+  background-color: #d4d4d4;
+  margin-top: 20px;
+  font-size: 14px;
+  height:max-content;
+}
 /* .checkout-box2{
   width: 500px;
   height: 200px;

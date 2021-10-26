@@ -25,6 +25,7 @@ function App() {
   const [brand, setBrand] = useState("")
   const [completedOrder, setCompletedOrder] = useState({})
   const [orderHistory, setOrderHistory] = useState([])
+  const [prodsMemory, setProdsMemory] = useState([])
 
   const history = useHistory()
   
@@ -36,7 +37,10 @@ function App() {
     setCurrentUser(r)
     setOrderHistory(r.orders)
   }
-
+  function settingTwoProds(data){
+      setProducts(data)
+      setProdsMemory(data)
+  }
   
  useEffect(()=>{
     fetch("/me")
@@ -52,7 +56,7 @@ function App() {
  useEffect(()=>{
   fetch("/products")
   .then(r => r.json())
-  .then(productList => setProducts(productList))
+  .then(productList => settingTwoProds(productList))
 }, [])
 
  useEffect(() =>{
@@ -72,6 +76,7 @@ function App() {
 
 function handleChange(id){
   setBrand("")
+  setProducts(prodsMemory)
   history.push(`/categories/${id}`)
 }
 
@@ -82,6 +87,16 @@ const mappedCategories =  categories.map(category =>{
       </li>)
 })
 
+function handleSearchBar(e){
+  e.preventDefault()
+  let diffValue = e.target.value
+  let searchFilter = products.filter(product => {
+      return product.name.toLowerCase().search(diffValue.toLowerCase()) != -1
+    })
+    console.log(diffValue)
+    setProducts(searchFilter)
+    history.push("/products")
+  }
 const mappedProducts = categories.map(category => {
     return(<Route path = {`/categories/${category.id}`}>
       <ProductList brand={brand} setBrand={setBrand} currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
@@ -106,7 +121,7 @@ const mappedProductPages = products.map(product =>{
     //   <div></div>}
       <Switch>
         <Route exact path="/" >
-          <Home currentUser={currentUser} mappedCategories={mappedCategories} />
+          <Home products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
           <BottomNav/>
         </Route>
         <Route path="/signup" >
