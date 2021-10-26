@@ -6,13 +6,14 @@ import { height } from "@mui/system";
 import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 
 
-function Login( {setCurrentUser} ){
+function Login( {setCurrentUser, setOpen} ){
     
     const history = useHistory()
     
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+    
 
     function handleUsername(e){
         setUsername(e.target.value)
@@ -35,7 +36,7 @@ function Login( {setCurrentUser} ){
         }).then(r => {
             if (r.ok) {
                 r.json().then(user => setCurrentUser(user))
-                .then(history.push("/"))
+                .then(history.push("/")).then(setOpen(true))
             }else{
                 r.json().then(error => setError(error.errors))
             }

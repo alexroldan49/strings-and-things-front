@@ -3,8 +3,9 @@ import { useHistory } from "react-router";
 import Navbar from "./Navbar";
 import HomeContent from "./HomeContent";
 import ProductList from "./ProductList";
+import SuccessLogin from "./SuccessLogin";
 
-function Home({currentUser, mappedCategories, handleSearchBar, setProducts, prodsMemory, products}){
+function Home({currentUser, mappedCategories, handleSearchBar, setProducts, prodsMemory, products, open, setOpen}){
 
 
 
@@ -13,6 +14,7 @@ return(
         <section className="section-one" >
             <Navbar products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
             <HomeContent mappedCategories={mappedCategories}/>
+            <SuccessLogin open={open} setOpen={setOpen} currentUser={currentUser} />
         </section>
         <section className="section-two" >
         

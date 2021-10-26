@@ -26,7 +26,8 @@ function App() {
   const [completedOrder, setCompletedOrder] = useState({})
   const [orderHistory, setOrderHistory] = useState([])
   const [prodsMemory, setProdsMemory] = useState([])
-
+  const [open, setOpen] = useState(false);
+  
   const history = useHistory()
   
   function handleHistory(e){
@@ -121,14 +122,14 @@ const mappedProductPages = products.map(product =>{
     //   <div></div>}
       <Switch>
         <Route exact path="/" >
-          <Home products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
+          <Home open={open} setOpen={setOpen} products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
           <BottomNav/>
         </Route>
         <Route path="/signup" >
          <Signup setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/login" >
-         <Login setCurrentUser={setCurrentUser} />
+         <Login setOpen={setOpen} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/userpage" >
          <UserPage />

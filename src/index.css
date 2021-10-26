@@ -285,7 +285,7 @@ section{
   justify-content: center;
   align-items: center;
   background-image: linear-gradient(45deg, rgb(129, 42, 42), rgb(158, 42, 42),  rgb(204, 114, 31), rgb(200, 186, 105));
-  background-size: 600%;
+  background-size: 500%;
   animation: bg-gradient 6s infinite alternate
 }
 @keyframes bg-gradient{
