@@ -86,12 +86,14 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
         
     }
     
+    
+    
     return(
         <>
         <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
         <div className="product-page" >
             <div >
-                {!zoom ? <img onClick={toggleZoom} width="575px" height="575px" src={image}  /> : <img onClick={toggleZoom} className="zoomed-in" width="575px" height="575px" src={image}  /> }
+               <img onClick={toggleZoom} width="575px" height="575px" src={image}  /> 
                 
                 <div style={{marginLeft: "150px", marginTop: "20px"}} >
                 <img style={{cursor: "pointer"}} onClick={handleImage} width="100px" height="100px" src={product.image}  />
@@ -104,6 +106,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
                 <h2 >{` Brand: ${product.brand}`}</h2>
                 <h1>{product.name}</h1>
                 <div style={{gap: "10px", color: "gray", fontWeight: "lighter"}} className="row" >
+                    <h2>{stars.toFixed(2)}</h2>
                     <Rating sx={{fontSize:"40px"}} name="read-only" value={stars} precision={0.5} readOnly />
                     <h2>{`(${reviewCount} reviews)`}</h2>
                 </div>
@@ -170,5 +173,6 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
         <BottomNav />
         </>
     )
+    
 }
 export default ProductPage

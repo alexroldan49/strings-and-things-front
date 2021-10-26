@@ -135,7 +135,7 @@ const mappedProductPages = products.map(product =>{
          <UserPage />
         </Route>
         <Route path="/user-account-page" >
-          <AccountPage mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <AccountPage orderHistory={orderHistory} mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/add-addresses" >
           <Addresses mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />

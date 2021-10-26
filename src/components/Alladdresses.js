@@ -42,8 +42,8 @@ function Alladdresses({currentUser}){
     return(
         <>
             <div>
-                <div className="middle" >
-                    <div className="column">
+                <div >
+                    <div >
                         <h2>Saved Addresses</h2>
                         <div >
                             {mappedAddresses}
