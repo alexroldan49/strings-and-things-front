@@ -161,7 +161,6 @@ section{
 .box{
   width: 500px;
   height: 350px;
-  background-color: rgba(206, 155, 62, 0.938);
   border-radius: 20px;
   margin: 40px;
   display: flex;
@@ -172,16 +171,16 @@ section{
   
 }
 .picture-text{
-  color:rgb(255, 255, 255)
-  /* font-family: var(--ff-title);
+  color:rgb(27, 27, 27);
+  font-family: var(--ff-title);
   font-weight: var(--fw-title);
   font-size: calc(2rem + 2.5vw);
   font-weight:900;
   background-image: url(https://i.ibb.co/x1ZnBdW/banner-top-yamaha.png);
   background-size: cover;
   background-clip: text;
-  color: transparent; */
-  
+  color: transparent;
+  cursor: pointer;
 }
 .image-text{
   background-image: url(https://i.ibb.co/QDYx8Jz/Thank.png);

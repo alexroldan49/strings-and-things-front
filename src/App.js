@@ -97,8 +97,8 @@ function handleSearchBar(e){
   let searchFilter = products.filter(product => {
       return product.name.toLowerCase().search(diffValue.toLowerCase()) != -1
     })
-    console.log(diffValue)
-    setProducts(searchFilter)
+    console.log(prodsMemory)
+    setTimeout(setProducts(searchFilter), 1000)
     history.push("/products")
   }
 const mappedProducts = categories.map(category => {

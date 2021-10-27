@@ -31,10 +31,8 @@ function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, set
     }
 
     function handleSwitchHome(){
+
         history.push("/")
-        if(products !== prodsMemory){
-            setProducts(prodsMemory)
-        }
     }
     function handleCart(){
         if (stored) {
@@ -70,7 +68,7 @@ function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, set
                     sx={{backgroundColor:"white"}}
                     id="input-with-icon-adornment"
                     />
-                    <Button sx={{height: "32px", marginBottom: "2px", backgroundColor: "black"}} variant="contained" value={search} onClick={handleSearchBar} type="submit" ><SearchIcon sx={{fontSize: "30px"}} /></Button>
+                    <Button sx={{height: "32px", marginBottom: "2px", backgroundColor: "black", color: "white"}} variant="contained" value={search} onClick={handleSearchBar} type="submit" >Enter</Button>
                     {/* </Box> */}
                     {/* </form> */}
                 </li>

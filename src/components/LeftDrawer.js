@@ -28,7 +28,7 @@ function LeftDrawer({ filterItems, brand, setBrand, category}){
   const mappedOptions = uniqueBrands.map(brand =>{
     return <FormControlLabel value={brand} control={<Radio />} label={brand} />
   })
-
+  
     return (
       <div  className="left-drawer" >
         <div className="filter-sort" >
