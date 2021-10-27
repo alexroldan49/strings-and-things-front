@@ -7,6 +7,7 @@ import Chip from '@mui/material/Chip';
 import AddToPhotosSharpIcon from '@mui/icons-material/AddToPhotosSharp';
 import BottomNav from "./BottomNav";
 import BasicModal from "./AddressDelete";
+import MenuBookOutlinedIcon from '@mui/icons-material/MenuBookOutlined';
 
 
 function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategories, setCurrentUser, currentUser, orderHistory}){
@@ -66,8 +67,17 @@ function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategori
     return(
         <>
         <Navbar currentUser={currentUser} mappedCategories={mappedCategories} />
-        <h1>{`You are Logged in! welcome ${currentUser.username}`}</h1>
-        <Button onClick={logout}>logout</Button>
+        <div style={{display: "flex", justifyContent: "space-between", marginLeft: "90px", marginRight: "90px"}} >
+          {/* <div style={{display: "flex", justifyContent: "space-between"}} > */}
+            <h2 style={{fontSize: "30px"}} className="sleek" >{currentUser.username}</h2>
+            <div style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}} >
+              <h2 style={{fontSize: "35px"}} className="sleek" >Address Book</h2>
+              <MenuBookOutlinedIcon sx={{fontSize: "50px", color: "gray", marginBottom: "5px"}} />
+            </div>
+            <Button sx={{backgroundColor:"#d4ab84", height: "40px", marginTop: "35px"}} variant="contained" onClick={logout}>logout</Button>
+          {/* </div> */}
+        </div>
+        <h3 className="sleek" style={{marginLeft: "100px"}} >You can add new addresses to save for future purchases and access them within you cart</h3>
         <div className="justify-center" >
           <div className="address-book" >
               <div className="each-address" >

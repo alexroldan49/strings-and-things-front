@@ -23,6 +23,7 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
 
     let date = new Date().toUTCString().slice(0, 16);
 
+    console.log(date)
     let storage = JSON.parse(localStorage.getItem("cart"))
 
     const productIds = storage.map(product =>{

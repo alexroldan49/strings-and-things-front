@@ -1,4 +1,4 @@
-import { Input, InputAdornment, Typography } from "@mui/material";
+import { Button, Input, InputAdornment, Typography } from "@mui/material";
 import React, { useState } from "react";
 import PersonIcon from '@mui/icons-material/Person';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -18,7 +18,6 @@ function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, set
     const [search, setSearch] = useState("")
     
     const history = useHistory()
-
     function handleChange(e){
         setSearch(e.target.value)
     }
@@ -70,12 +69,8 @@ function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, set
                     placeholder="Search Item..."
                     sx={{backgroundColor:"white"}}
                     id="input-with-icon-adornment"
-                    startAdornment={
-                        <InputAdornment position="start">
-                          <SearchIcon sx={{fontSize: "30px"}} />
-                        </InputAdornment>}
                     />
-                    <button value={search} onClick={handleSearchBar} type="submit" >search</button>
+                    <Button sx={{height: "32px", marginBottom: "2px", backgroundColor: "black"}} variant="contained" value={search} onClick={handleSearchBar} type="submit" ><SearchIcon sx={{fontSize: "30px"}} /></Button>
                     {/* </Box> */}
                     {/* </form> */}
                 </li>

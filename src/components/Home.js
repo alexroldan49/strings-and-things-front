@@ -9,7 +9,7 @@ import RecentProduct from "./RecentProduct";
 
 function Home({currentUser, mappedCategories, handleSearchBar, setProducts, prodsMemory, products, open, setOpen, recentlyViewed, setRecentlyViewed, cart, setCart}){
 
-    let slicedViewedProducts = recentlyViewed.slice(0, 4)
+    let slicedViewedProducts = recentlyViewed.slice(0, 5)
     
     const mappedRecentlyViewed = slicedViewedProducts.map(product=>{
        return ( <div className="inline" >
@@ -25,12 +25,15 @@ return(
             <SuccessLogin open={open} setOpen={setOpen} currentUser={currentUser} />
         </section>
         <section className="section-two" >
-            <div style={{display: "flex", flexDirection: "row"}}  >
-            {mappedRecentlyViewed}
-            </div>
-        </section>
-        <section className="section-three" >
 
+        </section>
+        <section className="section-two" >
+            <div className="home-section-two" >
+                    <h1 className="alex-font" style={{color: "white", fontSize: "55px"}} >Recently Viewed</h1>
+                <div className="home-recently-viewed" >
+                     {mappedRecentlyViewed}
+                </div>
+            </div>
         </section>
     </div>
         /* <button value="/signup" onClick={handleHistory} >Signup</button>

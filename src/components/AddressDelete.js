@@ -37,7 +37,7 @@ export default function BasicModal( {address, displayedAddresses, setDisplayedAd
   
   return (
     <div>
-      <Button onClick={handleOpen}>Remove</Button>
+      <Button color="error" onClick={handleOpen}>Remove</Button>
       <Modal
         open={open}
         onClose={handleClose}
