@@ -1,22 +1,24 @@
 import { Button } from "@mui/material";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import Navbar from "./Navbar";
 import OrderHistory from "./OrderHistory";
 import Chip from '@mui/material/Chip';
 import AddToPhotosSharpIcon from '@mui/icons-material/AddToPhotosSharp';
 import BottomNav from "./BottomNav";
+import BasicModal from "./AddressDelete";
 
 
-function AccountPage( { mappedCategories, setCurrentUser, currentUser, orderHistory}){
+function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategories, setCurrentUser, currentUser, orderHistory}){
 
-    // const addys = currentUser.addresses
+    const [addys, setAddys] = useState([])
 
     // const mappedAddys = addys.map(addy=>{
     //   <p></p>
     // })
     
     const history = useHistory()
+    
 
     function handleChange(e){
         history.push(e.target.id)
@@ -25,8 +27,8 @@ function AccountPage( { mappedCategories, setCurrentUser, currentUser, orderHist
     function handleHistory(){
       history.push("/add-addresses")
   }
-    
-    const mappedAddresses = currentUser.addresses.map(address=>{
+  
+    const mappedAddresses = displayedAddresses.map(address=>{
       return( <div className="each-address" >
                 <div style={{borderTop: "solid gray "}} className="address-text" >
                   <p>address street and number :</p>
@@ -47,10 +49,10 @@ function AccountPage( { mappedCategories, setCurrentUser, currentUser, orderHist
                 <div className="address-text" >
                   <p>Zipcode:</p>
                   <p>{address.zipcode}</p>
-                </div>                  
+                </div>
+                <BasicModal displayedAddresses={displayedAddresses} setDisplayedAddresses={setDisplayedAddresses} address={address} />           
               </div>)
     })
-    
     
     function logout(){
         fetch("/logout", { method: "DELETE"}).then(r=>{
@@ -72,7 +74,7 @@ function AccountPage( { mappedCategories, setCurrentUser, currentUser, orderHist
                   <h3>Add New Address</h3>
                   < AddToPhotosSharpIcon onClick={handleHistory} sx={{fontSize: "60px"}} className="plus" />
               </div>
-              {mappedAddresses}
+              {mappedAddresses ? mappedAddresses : <></>}
           </div>
         </div>
         <div className="inline2" >

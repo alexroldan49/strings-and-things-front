@@ -9,7 +9,7 @@ import { useHistory } from "react-router";
 import Rating from '@mui/material/Rating';
 
 
-function Product({ cart, setCart, product, setRecentlyViewed }){
+function RecentProduct({ cart, setCart, product, setRecentlyViewed }){
     const [quantity, setQuantity] = useState(0)
     const [addedtoCart, setAddedToCart] = useState(false)
     const history = useHistory()
@@ -38,7 +38,7 @@ function Product({ cart, setCart, product, setRecentlyViewed }){
         } else {
             let storage = JSON.parse(localStorage.getItem("viewed"))
             if (storage.length > 10) {
-            let storeLimit = JSON.parse(localStorage.getItem("viewed")).reverse().slice(0,4)
+            let storeLimit = JSON.parse(localStorage.getItem("viewed")).slice(0,4)
             localStorage.setItem("viewed", JSON.stringify([...storeLimit, product]))
             setRecentlyViewed([...storeLimit, product])
             } else {
@@ -52,17 +52,18 @@ function Product({ cart, setCart, product, setRecentlyViewed }){
     
     
     return(
-            <li className="product-card">
-                <Card sx={{ maxWidth: 345, minHeight: 550 }}>
+        <div style={{display:"flex", flexDirection: "column"}} >
+            <li className="product-card2">
+                <Card sx={{ maxWidth: 175, maxHeight: 340 }}>
                 <CardActionArea onClick={handleChange} >
                 <CardMedia 
                  component="img"
-                 height="340px"
+                 height="180px"
                  image={product.image}
                  alt={product.name}
                  />
                  <CardContent>
-                    <Typography sx={{textAlign: "center", marginTop: "30px", fontSize: "20px"}} gutterBottom variant="h5" component="div">
+                    <Typography sx={{textAlign: "center", marginTop: "30px", fontSize: "12px"}} gutterBottom variant="h5" component="div">
                         {product.name}
                     </Typography>
                     <div style={{display: "flex", justifyContent: "center"}} >
@@ -93,6 +94,7 @@ function Product({ cart, setCart, product, setRecentlyViewed }){
                         {addedtoCart ? <h3 className="added">Added to Cart</h3> : <div></div> }
                 </div>
                 </Card>
-                </li>)
+                </li>
+                </div>)
 }
-export default Product
+export default RecentProduct

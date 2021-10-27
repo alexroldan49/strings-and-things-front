@@ -26,7 +26,9 @@ function App() {
   const [completedOrder, setCompletedOrder] = useState({})
   const [orderHistory, setOrderHistory] = useState([])
   const [prodsMemory, setProdsMemory] = useState([])
+  const [displayedAddresses, setDisplayedAddresses] = useState([])
   const [open, setOpen] = useState(false);
+  const [recentlyViewed, setRecentlyViewed] = useState([])
   
   const history = useHistory()
   
@@ -37,6 +39,7 @@ function App() {
   function settingState(r){
     setCurrentUser(r)
     setOrderHistory(r.orders)
+    setDisplayedAddresses(r.addresses)
   }
   function settingTwoProds(data){
       setProducts(data)
@@ -100,7 +103,7 @@ function handleSearchBar(e){
   }
 const mappedProducts = categories.map(category => {
     return(<Route path = {`/categories/${category.id}`}>
-      <ProductList brand={brand} setBrand={setBrand} currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
+      <ProductList recentlyViewed={recentlyViewed} setRecentlyViewed={setRecentlyViewed} brand={brand} setBrand={setBrand} currentUser={currentUser} setCart={setCart} cart={cart} mappedCategories={mappedCategories} category={category}/>
       <BottomNav />
     </Route>)
 })
@@ -122,7 +125,7 @@ const mappedProductPages = products.map(product =>{
     //   <div></div>}
       <Switch>
         <Route exact path="/" >
-          <Home open={open} setOpen={setOpen} products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
+          <Home cart={cart} setCart={setCart} setRecentlyViewed={setRecentlyViewed} recentlyViewed={recentlyViewed} open={open} setOpen={setOpen} products={products} setProducts={setProducts} prodsMemory={prodsMemory} handleSearchBar={handleSearchBar} currentUser={currentUser} mappedCategories={mappedCategories} />
           <BottomNav/>
         </Route>
         <Route path="/signup" >
@@ -135,7 +138,7 @@ const mappedProductPages = products.map(product =>{
          <UserPage />
         </Route>
         <Route path="/user-account-page" >
-          <AccountPage orderHistory={orderHistory} mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <AccountPage setDisplayedAddresses={setDisplayedAddresses} displayedAddresses={displayedAddresses} orderHistory={orderHistory} mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/add-addresses" >
           <Addresses mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />

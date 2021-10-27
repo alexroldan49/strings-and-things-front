@@ -9,10 +9,17 @@ import KeyboardArrowDownRoundedIcon from '@mui/icons-material/KeyboardArrowDownR
 import Product from "./Product";
 import LeftDrawer from "./LeftDrawer";
 import BottomNav from "./BottomNav";
+import RecentProduct from "./RecentProduct";
 
 
-function ProductList( { brand, setBrand, currentUser, cart, setCart, category, mappedCategories} ){
+function ProductList( { brand, setBrand, currentUser, cart, setCart, category, mappedCategories, setRecentlyViewed, recentlyViewed } ){
     
+    let slicedViewedProducts = recentlyViewed.slice(0, 4)
+    const mappedRecentlyViewed = slicedViewedProducts.map(product=>{
+        return ( <div className="column" >
+                     <RecentProduct setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />
+                 </div>)
+     })
     
     const [prods, setProds] = useState([])
 
@@ -23,11 +30,11 @@ function ProductList( { brand, setBrand, currentUser, cart, setCart, category, m
     }
     
     let mappedProds = prods.map( product => {
-        return( <Product cart={cart} setCart={setCart} product={product} />)
+        return( <Product setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
 })
 
     const mappedCards = category.products.map( product => {
-            return( <Product cart={cart} setCart={setCart} product={product} />)
+            return( <Product setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
     })
     
     return(
@@ -38,7 +45,7 @@ function ProductList( { brand, setBrand, currentUser, cart, setCart, category, m
         <div className="product-grid">
         {!brand ? mappedCards : mappedProds}
         </div>
-
+            {mappedRecentlyViewed}
         </div>
         </>
     )

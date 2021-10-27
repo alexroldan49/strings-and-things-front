@@ -73,7 +73,7 @@ section{
   transition: 0.1s;
 }
 .section-two{
-  background-color: rgb(205, 216, 59);
+  background-color: rgb(12, 12, 12);
 }
 .shop-now{
   display: flex;
@@ -92,6 +92,9 @@ section{
 }
 .product-card{
   margin-bottom: 100px;
+  list-style: none;
+}
+.product-card2{
   list-style: none;
 }
 .row{
@@ -246,7 +249,7 @@ section{
 }
 .left-drawer{
     height: 969px;
-    width: 330px;
+    width: 300px;
     background-color: rgb(214, 214, 214);
     position: fixed;
     z-index: 1;
@@ -254,7 +257,7 @@ section{
     justify-content: center;
 }
 .filter-sort{
-  min-width: 250px;
+  min-width: 220px;
   height: 565px;
   background-color:rgb(230, 230, 230) ;
   padding: 20px;
@@ -325,7 +328,7 @@ section{
   border-top: solid rgb(177, 177, 177);
 }
 .bottom-nav{
-  margin-top: 80px;
+  margin-top: 0px;
   padding: 0;
   background-color: #333;
   height: 100px;
