@@ -40,7 +40,7 @@ function PaymentMethod( {cardNumber, setCardNumber, expiration, setExpiration, c
                     </InputAdornment>
                 ),
                 }}
-                variant="standard"
+                
             />
             <div style={{marginBottom: "20px"}} >
             <TextField
@@ -56,10 +56,10 @@ function PaymentMethod( {cardNumber, setCardNumber, expiration, setExpiration, c
                     </InputAdornment>
                 ),
                 }}
-                variant="standard"
+                
             />
             <TextField
-                sx={{width: "130px", marginLeft: 3}}
+                sx={{width: "130px", marginLeft: 3, color:"white"}}
                 id="cvc"
                 onChange={handleInput}
                 label="CVC"
@@ -67,11 +67,11 @@ function PaymentMethod( {cardNumber, setCardNumber, expiration, setExpiration, c
                 InputProps={{
                 startAdornment: (
                     <InputAdornment position="start">
-                    <HttpsOutlinedIcon />
+                    <HttpsOutlinedIcon  />
                     </InputAdornment>
                 ),
                 }}
-                variant="standard"
+                
             />
             </div>
         </div>

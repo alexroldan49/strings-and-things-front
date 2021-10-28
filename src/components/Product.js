@@ -37,7 +37,7 @@ function Product({ cart, setCart, product, setRecentlyViewed }){
             localStorage.setItem("viewed", JSON.stringify([product]))
         } else {
             let storage = JSON.parse(localStorage.getItem("viewed"))
-            if (storage.length > 10) {
+            if (storage.length > 6) {
             let storeLimit = JSON.parse(localStorage.getItem("viewed")).reverse().slice(0,4)
             localStorage.setItem("viewed", JSON.stringify([...storeLimit, product]))
             setRecentlyViewed([...storeLimit, product])

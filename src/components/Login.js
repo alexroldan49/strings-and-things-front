@@ -9,6 +9,10 @@ import FormatAlignRightIcon from '@mui/icons-material/FormatAlignRight';
 function Login( {setCurrentUser, setOpen} ){
     
     const history = useHistory()
+
+    function handleRoute(e){
+        history.push(e.target.value)
+    }
     
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
@@ -48,6 +52,7 @@ function Login( {setCurrentUser, setOpen} ){
         <div style={{backgroundImage: "url(https://i.ibb.co/HLvdT3H/guitar-strings-wallpaper-58788-60564-hd-wallpapers.jpg)", backgroundSize: "100%", backgroundColor: "black" }} className="middle" >
             <div style={{ height: "750px",width: "600px", backgroundColor: "rgba(68, 68, 68, 0.3)",display: "flex",justifyContent: "center", alignItems: "center"}}>
             <div style={{textAlign: "center", height: "650px", backgroundColor: "white", justifyContent: "center", width: "500px", alignItems: "center", gap: "10px"}} className="column" >
+                <Button onClick={handleRoute} sx={{alignSelf: "flex-end", marginRight: "30px", fontFamily: "'Oleo Script'", fontSize: "22", color: "orange"}} >Home</Button>
             <h1 style={{fontFamily: 'Fleur De Leah', fontSize: "40px"}} >Strings and Things</h1>
                 <FormatAlignRightIcon sx={{fontSize: "30px"}}  />
                 <h1>Login</h1>
@@ -63,7 +68,7 @@ function Login( {setCurrentUser, setOpen} ){
                 <TextField
                 sx={{backgroundColor: "white", width: "300px" }}
                 label="password"
-                type="text"
+                type="password"
                 value={password}
                 onChange={handlePassword}
                 />

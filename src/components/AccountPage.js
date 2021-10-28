@@ -32,7 +32,7 @@ function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategori
     const mappedAddresses = displayedAddresses.map(address=>{
       return( <div className="each-address" >
                 <div style={{borderTop: "solid gray "}} className="address-text" >
-                  <p>address street and number :</p>
+                  <p>Address :</p>
                   <p>{address.address}</p>
                 </div>
                 <div className="address-text" >

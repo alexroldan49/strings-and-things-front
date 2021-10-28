@@ -9,7 +9,7 @@ import AllProductsDrawer from "./AllProductsDrawer";
 import BottomNav from "./BottomNav";
 
 
-function AllProducts({ cart, setCart, categories, products, mappedCategories, brand, setBrand}){
+function AllProducts({ setRecentlyViewed, cart, setCart, categories, products, mappedCategories, brand, setBrand}){
 
     const mappedAllProductCategories = categories.map(category=>{
         return category.products
@@ -22,7 +22,7 @@ function AllProducts({ cart, setCart, categories, products, mappedCategories, br
     })
 
     let mappedProds = prods.map( product => {
-        return( <Product cart={cart} setCart={setCart} product={product} />)
+        return( <Product setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
 })
 
     function filterItems(e){
@@ -32,7 +32,7 @@ function AllProducts({ cart, setCart, categories, products, mappedCategories, br
     }
 
     const mappedCards = products.map( product => {
-        return(<Product cart={cart} setCart={setCart} product={product}/>)
+        return(<Product setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product}/>)
 })
 function check(){
     console.log(categories)

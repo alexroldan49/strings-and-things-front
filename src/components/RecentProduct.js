@@ -54,7 +54,7 @@ function RecentProduct({ cart, setCart, product, setRecentlyViewed }){
     return(
         <div style={{display:"flex", flexDirection: "column"}} >
             <li className="product-card2">
-                <Card sx={{ maxWidth: 175, maxHeight: 340 }}>
+                <Card sx={{ maxWidth: 165, maxHeight: 360 }}>
                 <CardActionArea onClick={handleChange} >
                 <CardMedia 
                  component="img"

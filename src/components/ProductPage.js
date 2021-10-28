@@ -104,7 +104,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
             </div>
             <div style={{width: "600px", MaxHeight: "600px", display: "flex", justifyContent: "center", padding: "40px", alignItems: "center", flexDirection: "column"}} >
                 <h2 >{` Brand: ${product.brand}`}</h2>
-                <h1>{product.name}</h1>
+                <h1 >{product.name}</h1>
                 <div style={{gap: "10px", color: "gray", fontWeight: "lighter"}} className="row" >
                     <h2>{stars.toFixed(2)}</h2>
                     <Rating sx={{fontSize:"40px"}} name="read-only" value={stars} precision={0.5} readOnly />
@@ -121,7 +121,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
                 variant="contained" 
                 color="success" 
                 sx={{height: "70px", width: "250px", fontSize: "20px", margin: "10px"}} 
-                > Added to cart</Button>}
+                > Add to cart</Button>}
             </div>
         </div>
         <div className="justify-center" >

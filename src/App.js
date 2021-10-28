@@ -129,7 +129,7 @@ const mappedProductPages = products.map(product =>{
           <BottomNav/>
         </Route>
         <Route path="/signup" >
-         <Signup setCurrentUser={setCurrentUser} />
+         <Signup setOpen={setOpen} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/login" >
          <Login setOpen={setOpen} setCurrentUser={setCurrentUser} />
@@ -141,7 +141,7 @@ const mappedProductPages = products.map(product =>{
           <AccountPage setDisplayedAddresses={setDisplayedAddresses} displayedAddresses={displayedAddresses} orderHistory={orderHistory} mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/add-addresses" >
-          <Addresses mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
+          <Addresses displayedAddresses={displayedAddresses} setDisplayedAddresses={setDisplayedAddresses} mappedCategories={mappedCategories} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/addresses" >
           <Alladdresses setCart={setCart} cart={cart} currentUser={currentUser} setCurrentUser={setCurrentUser} />
@@ -150,7 +150,7 @@ const mappedProductPages = products.map(product =>{
           <OrderHistory orderHistory={orderHistory} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/products" >
-         <AllProducts brand={brand} setBrand={setBrand} categories={categories} mappedCategories={mappedCategories} products={products} />
+         <AllProducts setRecentlyViewed={setRecentlyViewed} brand={brand} setBrand={setBrand} categories={categories} mappedCategories={mappedCategories} products={products} />
         </Route>
         <Route path="/cart" >
          <Cart currentUser={currentUser} mappedCategories={mappedCategories} products={products} />

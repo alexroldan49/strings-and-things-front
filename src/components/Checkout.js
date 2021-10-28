@@ -100,7 +100,7 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
     return(
         <>
             <div style={{display:"flex", justifyContent: "center"}} >
-            <h1>Chechout</h1>
+            <h1>Checkout</h1>
             </div>
             <div className="Checkout-page" >
                 <div className="column" >
@@ -135,8 +135,8 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
                         <div style={{backgroundColor: "rgb(31, 31, 31)", width:"inherit", color: "white"}} >
                             <h1>{`Total : $${total}`}</h1>
                             { address.length< 1 || cardNumber.length < 1 || expiration < 3 || cvc < 1 ?
-                            <Button className="list-item2" sx={{backgroundColor: "white", width: "450px", margin: "10px", fontWeight: "bold", fontSize: "20px"}} onClick={placeOrder} disabled>Place Order</Button> :
-                            <Button className="list-item2" sx={{backgroundColor: "white", width: "450px", margin: "10px", fontWeight: "bold", fontSize: "20px"}} onClick={placeOrder}>Place Order</Button>
+                            <Button className="list-item2" sx={{backgroundColor: "white", width: "450px", margin: "10px", fontWeight: "bold", fontSize: "20px", marginBottom: "20px"}} onClick={placeOrder} disabled>Place Order</Button> :
+                            <Button className="list-item2" sx={{backgroundColor: "white", width: "450px", margin: "10px", fontWeight: "bold", fontSize: "20px", marginBottom: "20px"}} onClick={placeOrder}>Place Order</Button>
                              }
                         </div>
                     </div>

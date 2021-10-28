@@ -12,7 +12,7 @@ function HomeContent({ mappedCategories}){
     
     return(
         <>
-        <img src="https://i.ibb.co/QDYx8Jz/Thank.png" alt="playing guitar" width="100%" height="53%"  />
+        <img src="https://i.ibb.co/QDYx8Jz/Thank.png" alt="playing guitar" width="100%" height="55%"  />
         <div className="shop-now" >
         <Button onClick={handleChange} sx={{height: "80px",width: "200px", borderRadius: "20px", backgroundColor: "#a5362e"}} variant="contained">Shop Now</Button>
         </div>

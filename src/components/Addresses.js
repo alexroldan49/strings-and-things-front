@@ -2,7 +2,7 @@ import { Button, TextField } from "@mui/material";
 import React, { useState } from "react";
 import { useHistory } from "react-router";
 
-function Addresses({currentUser}){
+function Addresses({currentUser, setDisplayedAddresses, displayedAddresses}){
 
     const [address, setAddress] = useState("")
     const [apt, setApt] = useState("")
@@ -21,14 +21,19 @@ function Addresses({currentUser}){
         zipcode: zipcode
     }
 
-    function addAddress(){
+    function updateAddress(){
+        setDisplayedAddresses([...displayedAddresses, newAddy])
+    }
+    
+    function addAddress(e){
+        e.preventDefault()
         fetch("/addresses", {
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify(newAddy)
           }).then(r => {
               if (r.ok){
-                  r.json().then(history.push("/user-account-page"))
+                  r.json().then(updateAddress()).then(history.push("/user-account-page"))
               }else{
                   r.json().then(r => console.log(r.errors))
               }
@@ -54,7 +59,7 @@ function Addresses({currentUser}){
     return(
         <div style={{backgroundColor:"#c2c7c0"}} className="middle">
             <div style={{backgroundColor: "white", padding: "100px"}} className="column" >
-                <h2>Add new Address</h2>
+                <h2>Add New Address</h2>
                 <form className="column" onSubmit={addAddress} >
                 <TextField
                 id = "Address"
