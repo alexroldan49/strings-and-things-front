@@ -150,7 +150,7 @@ const mappedProductPages = products.map(product =>{
           <OrderHistory orderHistory={orderHistory} currentUser={currentUser} setCurrentUser={setCurrentUser} />
         </Route>
         <Route path="/products" >
-         <AllProducts setRecentlyViewed={setRecentlyViewed} brand={brand} setBrand={setBrand} categories={categories} mappedCategories={mappedCategories} products={products} />
+         <AllProducts setCart={setCart} cart={cart} setRecentlyViewed={setRecentlyViewed} brand={brand} setBrand={setBrand} categories={categories} mappedCategories={mappedCategories} products={products} />
         </Route>
         <Route path="/cart" >
          <Cart currentUser={currentUser} mappedCategories={mappedCategories} products={products} />

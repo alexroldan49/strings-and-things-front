@@ -9,25 +9,29 @@ import { useHistory } from "react-router";
 import Rating from '@mui/material/Rating';
 
 
-function Product({ cart, setCart, product, setRecentlyViewed }){
+function Product({ cart, setCart, product, setRecentlyViewed, currentUser }){
     const [quantity, setQuantity] = useState(0)
     const [addedtoCart, setAddedToCart] = useState(false)
     const history = useHistory()
 
 
     function addItem(){
-        setAddedToCart(true)
-        setTimeout(() => {
-            setAddedToCart(false)
-          }, 2500);
-        if (JSON.parse(localStorage.getItem("cart")) === null)  {
-            // localStorage.setItem("cart", JSON.stringify([]))
-            setCart([product])
-            localStorage.setItem("cart", JSON.stringify([product]))
-        } else {
-            let storage = JSON.parse(localStorage.getItem("cart"))
-            setCart([...storage, product])
-            localStorage.setItem("cart", JSON.stringify([...storage, product]))
+        if (currentUser){
+            setAddedToCart(true)
+            setTimeout(() => {
+                setAddedToCart(false)
+              }, 2500);
+            if (JSON.parse(localStorage.getItem("cart")) === null)  {
+                // localStorage.setItem("cart", JSON.stringify([]))
+                setCart([product])
+                localStorage.setItem("cart", JSON.stringify([product]))
+            } else {
+                let storage = JSON.parse(localStorage.getItem("cart"))
+                setCart([...storage, product])
+                localStorage.setItem("cart", JSON.stringify([...storage, product]))
+            }
+        }else{
+            alert("Sign in to add to cart")
         }
         console.log(cart)
     }
@@ -37,8 +41,8 @@ function Product({ cart, setCart, product, setRecentlyViewed }){
             localStorage.setItem("viewed", JSON.stringify([product]))
         } else {
             let storage = JSON.parse(localStorage.getItem("viewed"))
-            if (storage.length > 6) {
-            let storeLimit = JSON.parse(localStorage.getItem("viewed")).reverse().slice(0,4)
+            if (storage.length > 4) {
+            let storeLimit = JSON.parse(localStorage.getItem("viewed")).slice(2,5)
             localStorage.setItem("viewed", JSON.stringify([...storeLimit, product]))
             setRecentlyViewed([...storeLimit, product])
             } else {
@@ -79,14 +83,8 @@ function Product({ cart, setCart, product, setRecentlyViewed }){
                         orientation="vertical"
                         aria-label="vertical outlined button group"
                     >
-                        <IconButton >
-                            <KeyboardArrowUpRoundedIcon sx={{color: "rgb(255, 136, 0)"}} />
-                        </IconButton>
                         <IconButton>
-                            <AddCircleOutlinedIcon onClick={addItem} sx={{color: "rgb(255, 136, 0)"}} />
-                        </IconButton>
-                        <IconButton>
-                            <KeyboardArrowDownRoundedIcon sx={{color: "rgb(255, 136, 0)"}} />
+                            <AddCircleOutlinedIcon onClick={addItem} sx={{color: "rgb(255, 136, 0)", marginLeft: "15px", marginBottom: "20px", fontSize: "30px"}} />
                         </IconButton>
                     </ButtonGroup>
                         

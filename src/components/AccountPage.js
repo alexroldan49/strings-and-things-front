@@ -89,7 +89,7 @@ function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategori
         </div>
         <div className="inline2" >
             <div className="box" ><h1 onClick={handleChange} id="/order-history" className="picture-text" >Order History</h1></div>
-            <div className="box" ><h1 onClick={handleChange} id="/reviewed"  className="picture-text" >Reviewed Items</h1></div>
+            {/* <div className="box" ><h1 onClick={handleChange} id="/reviewed"  className="picture-text" >Reviewed Items</h1></div> */}
         </div>
         <BottomNav />
         </>

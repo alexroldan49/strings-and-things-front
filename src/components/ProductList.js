@@ -30,11 +30,11 @@ function ProductList( { brand, setBrand, currentUser, cart, setCart, category, m
     }
     
     let mappedProds = prods.map( product => {
-        return( <Product setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
+        return( <Product currentUser={currentUser} setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
 })
 
     const mappedCards = category.products.map( product => {
-            return( <Product setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
+            return( <Product currentUser={currentUser} setRecentlyViewed={setRecentlyViewed} cart={cart} setCart={setCart} product={product} />)
     })
     
     return(

@@ -61,6 +61,7 @@ function PaymentMethod( {cardNumber, setCardNumber, expiration, setExpiration, c
             <TextField
                 sx={{width: "130px", marginLeft: 3, color:"white"}}
                 id="cvc"
+                type="password"
                 onChange={handleInput}
                 label="CVC"
                 value={cvc}

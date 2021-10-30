@@ -41,18 +41,23 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
     }
     
     function addItem(){
-        setAddedToCart(true)
-        setTimeout(() => {
-            setAddedToCart(false)
-          }, 2500);
-        if (JSON.parse(localStorage.getItem("cart")) === null)  {
-            // localStorage.setItem("cart", JSON.stringify([]))
-            setCart([product])
-            localStorage.setItem("cart", JSON.stringify([product]))
-        } else {
-            let storage = JSON.parse(localStorage.getItem("cart"))
-            setCart([...storage, product])
-            localStorage.setItem("cart", JSON.stringify([...storage, product]))
+
+        if (currentUser){
+            setAddedToCart(true)
+            setTimeout(() => {
+                setAddedToCart(false)
+              }, 2500);
+            if (JSON.parse(localStorage.getItem("cart")) === null)  {
+                // localStorage.setItem("cart", JSON.stringify([]))
+                setCart([product])
+                localStorage.setItem("cart", JSON.stringify([product]))
+            } else {
+                let storage = JSON.parse(localStorage.getItem("cart"))
+                setCart([...storage, product])
+                localStorage.setItem("cart", JSON.stringify([...storage, product]))
+            }
+        }else{
+            alert("Sign in to add to cart")
         }
         console.log(cart)
     }

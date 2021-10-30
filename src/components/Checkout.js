@@ -30,6 +30,14 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
         return({product_id: product.id})
     })
 
+    function goBackToCart(){
+        history.push("/cart")
+    }
+
+    function goToAddAddress(){
+        history.push("/add-addresses")
+    }
+    
     const storageTotal = storage.map(item => item.price).reduce((prev, curr) => prev + curr, 0)
     const total = storageTotal.toFixed(2)
 
@@ -41,7 +49,7 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
           };
     
         return(
-            <List sx={style} component="nav"    sx={{
+            <List onClick={goBackToCart} sx={style} component="nav"    sx={{
                 width: '100%',
                 minWidth: 360,
                 maxWidth: 3600,
@@ -110,7 +118,7 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
                     <div className="checkout-box" >
                         <h3>Shipping Address</h3>
                         <AddressOption setAddress={setAddress} address={address} currentUser={currentUser} />
-                        <Button sx={{color: "black"}} >Add New Address</Button>
+                        <Button onClick={goToAddAddress}  sx={{color: "black"}} >Add New Address</Button>
                     </div>
                     <div className="checkout-box">
                         <h3>Payment Method</h3>

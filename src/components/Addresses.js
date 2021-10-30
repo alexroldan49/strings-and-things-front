@@ -55,6 +55,10 @@ function Addresses({currentUser, setDisplayedAddresses, displayedAddresses}){
             setZipcode(target)
         }
     }
+
+    function goTo(e){
+        history.push(e.target.value)
+    }
     
     return(
         <div style={{backgroundColor:"#c2c7c0"}} className="middle">
@@ -102,6 +106,10 @@ function Addresses({currentUser, setDisplayedAddresses, displayedAddresses}){
                  sx={{backgroundColor: "black"}}
                    >Add</Button>
                 </form>
+                <div style={{alignSelf: "flex-end", margin: 0}} >
+                    <Button onClick={goTo} value="/" sx={{ margin: 1, padding: 0, color: "orange"}} >Home</Button>
+                    <Button onClick={goTo} value="/user-account-page" sx={{ margin: 1, padding: 0,  color: "orange"}} >Account</Button>
+                </div>
             </div>
         </div>
     )

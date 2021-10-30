@@ -19,7 +19,7 @@ function AddressOption({currentUser, address, setAddress}){
     };
 
     const mappedAddresses = currentUser.addresses.map(address=>{
-        return(<MenuItem value={`${address.address} ${address.apt} ${address.city} ${address.city} ${address.state} ${address.zipcode} `}>{`${address.address} ${address.apt} ${address.city} ${address.city} ${address.state} ${address.zipcode} `}</MenuItem>)
+        return(<MenuItem value={`${address.address} ${address.apt} ${address.city} ${address.state} ${address.zipcode} `}>{`${address.address} ${address.apt} ${address.city} ${address.state} ${address.zipcode} `}</MenuItem>)
     })
 
     

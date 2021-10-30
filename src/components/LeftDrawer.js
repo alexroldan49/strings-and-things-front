@@ -16,7 +16,7 @@ function LeftDrawer({ filterItems, brand, setBrand, category}){
   
   const uniqueBrands = [...new Set(mappedBrands)]
 
-
+  
   const handleChange = (e) => {
     setBrand(e.target.value)
     filterItems(e)
