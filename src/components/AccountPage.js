@@ -17,6 +17,9 @@ function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategori
     // const mappedAddys = addys.map(addy=>{
     //   <p></p>
     // })
+
+    const herokuURL = "https://strings-and-things.herokuapp.com"
+  
     
     const history = useHistory()
     
@@ -56,7 +59,7 @@ function AccountPage( {displayedAddresses, setDisplayedAddresses, mappedCategori
     })
     
     function logout(){
-        fetch("/logout", { method: "DELETE"}).then(r=>{
+        fetch(`${herokuURL}/logout`, { method: "DELETE"}).then(r=>{
           if (r.ok){
             setCurrentUser(null)
           }

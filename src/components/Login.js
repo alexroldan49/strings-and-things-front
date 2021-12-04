@@ -17,6 +17,9 @@ function Login( {setCurrentUser, setOpen} ){
     const [username, setUsername] = useState("")
     const [password, setPassword] = useState("")
     const [error, setError] = useState("")
+
+    const herokuURL = "https://strings-and-things.herokuapp.com"
+  
     
 
     function handleUsername(e){
@@ -33,7 +36,7 @@ function Login( {setCurrentUser, setOpen} ){
     
     function handleSubmit(e){
         e.preventDefault()
-        fetch("/login", {
+        fetch(`${herokuURL}/login`, {
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify(credentials)

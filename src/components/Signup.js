@@ -11,6 +11,9 @@ function Signup({setCurrentUser, setOpen}){
     const [error, setError] = useState("")
     const history = useHistory()
 
+    const herokuURL = "https://strings-and-things.herokuapp.com"
+  
+
     function handleRoute(e){
       history.push(e.target.value)
   }
@@ -32,7 +35,7 @@ function Signup({setCurrentUser, setOpen}){
         email: email,
         password: password
       }
-      fetch("/signup", {
+      fetch(`${herokuURL}/signup`, {
         method: "POST",
         headers: {"content-type": "application/json"},
         body: JSON.stringify(user)

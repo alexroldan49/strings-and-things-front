@@ -21,12 +21,15 @@ export default function BasicModal( {address, displayedAddresses, setDisplayedAd
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const herokuURL = "https://strings-and-things.herokuapp.com"
+  
+
   function filterAddresses(r){
       setDisplayedAddresses(displayedAddresses.filter(addy=>{ return addy.id !== address.id}))
   }
 
   function handleDelete(){
-      fetch(`/addresses/${address.id}`,{
+      fetch(`${herokuURL}/addresses/${address.id}`,{
           method: "DELETE"
       }).then(r =>{
           if (r.ok){
