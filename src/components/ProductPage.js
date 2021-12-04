@@ -20,6 +20,9 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
     const history = useHistory()
     const [zoom, setZoom] = useState(false)
 
+    const herokuURL = "https://strings-and-things.herokuapp.com"
+  
+
     const reviewBody = {
         comment: comment,
         star_rating: rating,
@@ -76,7 +79,7 @@ function ProductPage({ currentUser, product, cart, setCart, mappedCategories}){
 
     function submitComment(e){
         e.preventDefault()
-        fetch("/reviews", {
+        fetch(`${herokuURL}/reviews`, {
             method: "POST",
             headers: {"content-type" : "application/json"},
             body: JSON.stringify(reviewBody)

@@ -17,7 +17,7 @@ import CompletedOrder from "./components/CompletedOrder";
 import BottomNav from "./components/BottomNav";
 
 function App() {
-
+  
   const [currentUser, setCurrentUser] = useState("")
   const [categories, setCategories] = useState([])
   const [products, setProducts] = useState([])
@@ -29,6 +29,9 @@ function App() {
   const [displayedAddresses, setDisplayedAddresses] = useState([])
   const [open, setOpen] = useState(false);
   const [recentlyViewed, setRecentlyViewed] = useState([])
+
+  const herokuURL = "https://strings-and-things.herokuapp.com"
+  
   
   const history = useHistory()
   
@@ -47,7 +50,7 @@ function App() {
   }
   
  useEffect(()=>{
-    fetch("/me")
+    fetch(`${herokuURL}/me`)
     .then(r => {
       if (r.ok) {
         r.json().then(r => settingState(r))
@@ -58,20 +61,20 @@ function App() {
  }, [])
 
  useEffect(()=>{
-  fetch("/products")
+  fetch(`${herokuURL}/products`)
   .then(r => r.json())
   .then(productList => settingTwoProds(productList))
 }, [])
 
  useEffect(() =>{
-  fetch("/categories")
+  fetch(`${herokuURL}/categories`)
   .then(r => r.json())
   .then(categoryList => setCategories(categoryList))
   .then(console.log(categories))
 },[])
   
  function logout(){
-  fetch("/logout", { method: "DELETE"}).then(r=>{
+  fetch(`${herokuURL}/logout`, { method: "DELETE"}).then(r=>{
     if (r.ok){
       setCurrentUser("")
     }
