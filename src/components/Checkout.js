@@ -17,7 +17,7 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
     const [expiration, setExpiration] = useState("")
     const [cvc, setCvc] = useState("")
 
-    
+    const herokuURL = "https://strings-and-things.herokuapp.com"
     
     const history = useHistory()
 
@@ -90,7 +90,7 @@ function Checkout( { orderHistory, setOrderHistory, currentUser, setCompletedOrd
     
     function placeOrder(){
 
-        fetch("/orders", {
+        fetch(`${herokuURL}/orders`, {
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify(orderBody)
