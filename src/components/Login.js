@@ -39,6 +39,7 @@ function Login( {setCurrentUser, setOpen} ){
         fetch(`${herokuURL}/login`, {
             method: "POST",
             headers: {"content-type": "application/json"},
+            credentials: "include",
             body: JSON.stringify(credentials)
         }).then(r => {
             if (r.ok) {

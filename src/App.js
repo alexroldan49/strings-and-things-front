@@ -50,13 +50,23 @@ function App() {
   }
   
  useEffect(()=>{
-    fetch(`${herokuURL}/me`)
+    fetch(`${herokuURL}/me`, {
+      method: "GET",
+      headers: {
+        'Accept':  'application/json',
+       'Content-Type': 'application/json',
+       'Cache': 'no-cache'
+      },
+      credentials: "include"
+    })
     .then(r => {
       if (r.ok) {
         r.json().then(r => settingState(r))
       }else{
-        r.json().then(r => console.log(r))
+        throw new Error("something went wrong")
       }
+    }).catch(error =>{
+      console.log(error)
     })
  }, [])
 
@@ -64,13 +74,19 @@ function App() {
   fetch(`${herokuURL}/products`)
   .then(r => r.json())
   .then(productList => settingTwoProds(productList))
+  .catch(error =>{
+    console.log(error)
+  })
 }, [])
 
  useEffect(() =>{
   fetch(`${herokuURL}/categories`)
   .then(r => r.json())
   .then(categoryList => setCategories(categoryList))
-  .then(console.log(categories))
+  .catch(error =>{
+    console.log(error)
+  })
+
 },[])
   
  function logout(){
