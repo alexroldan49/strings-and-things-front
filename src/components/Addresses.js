@@ -10,6 +10,8 @@ function Addresses({currentUser, setDisplayedAddresses, displayedAddresses}){
     const [state, setState] = useState("")
     const [zipcode, setZipcode] = useState("")
 
+    const herokuURL = "https://strings-and-things.herokuapp.com"
+
     const history = useHistory()
 
     const newAddy = {
@@ -27,7 +29,7 @@ function Addresses({currentUser, setDisplayedAddresses, displayedAddresses}){
     
     function addAddress(e){
         e.preventDefault()
-        fetch("/addresses", {
+        fetch(`${herokuURL}/addresses`, {
             method: "POST",
             headers: {"content-type": "application/json"},
             body: JSON.stringify(newAddy)
