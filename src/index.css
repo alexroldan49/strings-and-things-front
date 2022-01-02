@@ -452,6 +452,32 @@ section{
   transform: translateY(-20%);
   
 }
+@media (max-width: 600px){
+    .navbar{
+      background-color: white;
+      height: 25px;
+    }
+    .navbar li{
+     font-size: 15px;
+     color: black
+    }
+    .logo{
+      font-size: 15px;
+      color:rgb(0, 0, 0);
+      
+    }
+    .subheader {
+      padding:0px;
+      height: 70px;
+    }
+     .subheader li{
+       font-size: 12px;
+       padding: 5px;
+     }
+    .shopCartIcon{
+     
+    }
+}
 /* @keyframes move-around {
       0%{
         transform: translate(0)

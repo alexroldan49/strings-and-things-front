@@ -68,7 +68,7 @@ function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, set
                     sx={{backgroundColor:"white"}}
                     id="input-with-icon-adornment"
                     />
-                    <Button sx={{height: "32px", marginBottom: "2px", backgroundColor: "black", color: "white"}} variant="contained" value={search} onClick={handleSearchBar} type="submit" >Enter</Button>
+                    <Button className="navButton" sx={{height: "32px", marginBottom: "2px", backgroundColor: "black", color: "white"}} variant="contained" value={search} onClick={handleSearchBar} type="submit" >Enter</Button>
                     {/* </Box> */}
                     {/* </form> */}
                 </li>
@@ -81,7 +81,7 @@ function Navbar( { setBrand, currentUser, mappedCategories, handleSearchBar, set
                 <li>
                     <div onClick={handleCart} className="inline" >
                     <ShoppingCartIcon
-                    sx={{color:"#a5362e", fontSize: "35px", cursor: "pointer"}}
+                    sx={{color:"#a5362e", fontSize: "35px", cursor: "pointer" }}
                     />
                     {localStorage.cart  ? <div><h4>{storage.length}</h4></div> : <div></div> }
                     { emptyCartMessage ?  <p style={{color: "orange", position: "fixed", marginTop: "40px"}} >Cart Is currently Empty</p> : "" }
