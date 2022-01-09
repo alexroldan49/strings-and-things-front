@@ -21,6 +21,7 @@ code {
   justify-content: flex-end;
   align-items: center;
   padding: 30px 10%;
+  flex-wrap: nowrap;
   position: relative;
   z-index: 5;
 }
@@ -434,6 +435,7 @@ section{
     justify-content: space-between;
 }
 .home-img{
+  object-fit: cover;
 }
 .home-img-text h2{
   color: white;
@@ -473,6 +475,9 @@ section{
      .subheader li{
        font-size: 12px;
        padding: 5px;
+     }
+     #input-with-icon-adornment{
+       width: 100px;
      }
     .shopCartIcon{
      

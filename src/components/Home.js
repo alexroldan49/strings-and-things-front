@@ -31,7 +31,7 @@ return(
             <SuccessLogin open={open} setOpen={setOpen} currentUser={currentUser} />
         </section>
         <section className="section-second" >
-            <div className="home-images" >
+            <div className="home-images">
                 <img height="600px" width="1000px" style={{borderRadius: "15px"}} className="home-img" src={homeImage} />
                 <div className="home-img-text" >
                     <h2 className="text" onMouseOver={handleHover} id="https://i.ibb.co/hyFLfN7/play-fender-stratocaster-blue-guitar-strat-wallpaper-preview-Home1.jpg" >Discover Your Sound</h2>
